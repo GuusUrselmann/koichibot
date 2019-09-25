@@ -1,0 +1,248 @@
+@import 'variables';
+
+/* GRID BLOCKS ADMIN CONTENT*/
+/* STANDS*/
+#stands.content-block {
+    .block-header {
+    }
+    .block-body {
+        .stands-list {
+            width: 100%;
+            .stand-card {
+                width: calc(100% / 5);
+                float: left;
+                padding: 10px;
+                a {
+                width: 100%;
+                display: block;
+                    .stand-inner {
+                        padding: 10px;
+                        .stand-image {
+                            width: 250px;
+                            height: 250px;
+                            border-radius: 50%;
+                            box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
+                            margin: auto;
+
+                        }
+                        .stand-name {
+                            color: #000;
+                            text-align: center;
+                            line-height: 24px;
+                            margin-top: 15px;
+                            &:hover {
+                                color: #000;
+                            }
+                        }
+                        .stand-info {
+                            width: 80%;
+                            border-top: 1px solid #EA2790;
+                            margin: auto;
+                            margin-bottom: 50px;
+                            line-height: 24px;
+                            color: #000;
+                            &:hover {
+                                color: #000;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+/* UserEdit*/
+#userEdit.content-block {
+    .block-header {
+        .block-title {
+            input {
+                width: 250px;
+                height: 45px;
+                background-color: transparent;
+                color: #fff;
+                border: none;
+                font-size: 22px;
+            }
+        }
+    }
+    .block-body {
+        .user-header {
+            width: 100%;
+            display: inline-block;
+            .user-userskin {
+                width: 225px;
+                height: 225px;
+                padding: 10px;
+                margin: 40px 10px;
+                float: left;
+                .userskin-inner {
+                    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 50%;
+                }
+                .userskin-name {
+                    width: 100%;
+                    height: 35px;
+                    line-height: 35px;
+                    text-align: center;
+                    padding-top: 10px;
+                }
+            }
+            .user-progress {
+                width: 300px;
+                float: left;
+                margin-left: 50px;
+                .progress-title {
+                    width: 100%;
+                    text-align: center;
+                    font-size: 32px;
+                    padding-top: 15px;
+                }
+                .progress-level {
+                    width: 100%;
+                    .level-inner {
+                        padding-top: 30px;
+                        #progressChart {
+                            margin: auto;
+                        }
+                    }
+                }
+            }
+        }
+        .user-body {
+            width: 100%;
+            margin-top: 50px;
+            .user-stand {
+                .stand-title {
+                    width: 80%;
+                    font-size: 30px;
+                    border-bottom: 2px solid #EA2790;
+                    padding-left: 5px;
+                }
+                .stand-info {
+                    padding-top: 15px;
+                    padding-left: 5px;
+                    .stand {
+                        .form-select {
+                            width: 60%;
+                            height: 25px;
+                            .select-current {
+                                width: calc(100% -20px);
+                                height: 100%;
+                                line-height: 25px;
+                                font-size: 16px;
+                                text-overflow: ellipsis;
+                                overflow: hidden;
+                                white-space: nowrap;
+                                &:hover {
+                                    cursor: pointer;
+                                }
+                            }
+                            .select-list {
+                                display: none;
+                                position: relative;
+                                background-color: #fff;
+                                border: 2px solid #EA2790;
+                                li {
+                                    width: 100%;
+                                    height: 25px;
+                                    text-overflow: ellipsis;
+                                    overflow: hidden;
+                                    white-space: nowrap;
+                                    padding: 2.5px 5px;
+                                    box-sizing: border-box;
+                                    &:hover {
+                                        background-color: #ddd;
+                                        cursor: pointer;
+                                    }
+                                }
+                                &.toggled {
+                                    display: block!important;
+                                }
+                            }
+                        }
+                    }
+                    .stand-stats {
+                        margin-top: 20px;
+                        display: none;
+                        table {
+                            tr {
+                                td {
+                                    padding: 2.5px 0px;
+                                    input {
+                                        border: none;
+                                        width: 80px;
+                                        margin-left: 15px;
+                                        font-size: 16px;
+                                        border-bottom: 1px solid #EA2790;
+                                    }
+                                }
+                            }
+                        }
+                        &.toggled {
+                            display: block;
+                        }
+                    }
+                }
+            }
+            .user-stats {
+                .stats-title {
+                    width: 300px;
+                    font-size: 30px;
+                    border-bottom: 2px solid #EA2790;
+                    padding-left: 5px;
+                }
+                .stats-list {
+                    margin-top: 20px;
+                    table {
+                        tr {
+                            td {
+                                padding: 2.5px 0px;
+                                input {
+                                    border: none;
+                                    width: 80px;
+                                    margin-left: 15px;
+                                    font-size: 16px;
+                                    border-bottom: 1px solid #EA2790;
+                                    &.longstat {
+                                        width: 100%;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .user-infocard {
+                width: calc(100%/3);
+                padding: 20px;
+                float: left;
+            }
+        }
+    }
+    .button-submit {
+        position: absolute;
+        bottom: 50px;
+        right: 30px;
+        width: 150px;
+        height: 45px;
+        button {
+            display: block;
+            width: 100%;
+            height: 100%;
+            background-color: #28a824;
+            line-height: 45px;
+            text-align: center;
+            font-size: 22px;
+            color: #fff;
+            border: 2px solid #28a824;
+            font-weight: 700;
+            &:hover {
+                cursor: pointer;
+                background-color: #fff;
+                color: #28a824;
+            }
+        }
+    }
+}
