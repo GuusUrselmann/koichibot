@@ -22,10 +22,15 @@ class CreateUsersTable extends Migration
             $table->integer('money');
             $table->integer('userskin_id')->unsigned()->nullable();
             $table->integer('stand_id')->unsigned()->nullable();
+            $table->integer('health')->nullable();
             $table->integer('power_min')->nullable();
             $table->integer('power_max')->nullable();
-            $table->integer('health')->nullable();
-            $table->integer('speed')->nullable();
+            $table->string('power')->nullable();
+            $table->string('speed')->nullable();
+            $table->string('range')->nullable();
+            $table->string('durability')->nullable();
+            $table->string('precision')->nullable();
+            $table->string('potential')->nullable();
             $table->text('abilities', 155)->nullable();
             $table->integer('level_id')->unsigned()->nullable();
             $table->integer('experience')->nullable();

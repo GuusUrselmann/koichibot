@@ -30,6 +30,9 @@ Route::group(['prefix' => '/admin'], function() {
   Route::group(['prefix' => 'stands'], function() {
       Route::get('/', 'Admin\AdminStandsController@stands');
   });
+  Route::group(['prefix' => 'levels'], function() {
+      Route::get('/', 'Admin\AdminLevelsController@levels');
+  });
 });
 
 

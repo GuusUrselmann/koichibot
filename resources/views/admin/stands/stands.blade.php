@@ -17,7 +17,7 @@
                                     {{$stand->name}}
                                 </div>
                                 <div class="stand-info">
-                                    Active:
+                                    Active: {{$stand->active()}}
                                 </div>
                             </div>
                         </a>

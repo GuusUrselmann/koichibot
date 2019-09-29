@@ -21,7 +21,17 @@ class UsersTableSeeder extends Seeder
             'money' => 0,
             'userskin_id' => '1',
             'stand_id' => 9,
-            'level_id' => 1
+            'health' => 250,
+            'power_min' => 34,
+            'power_max' => 56,
+            'power' => 'A',
+            'speed' => 'A',
+            'range' => 'A',
+            'durability' => 'A',
+            'precision' => 'A',
+            'potential' => 'A',
+            'level_id' => 1,
+            'experience' => 0
         ]);
         App\User::create([
             'discord_id' => '278550031848570881',
@@ -31,7 +41,17 @@ class UsersTableSeeder extends Seeder
             'money' => 0,
             'userskin_id' => '2',
             'stand_id' => 8,
-            'level_id' => 1
+            'health' => 250,
+            'power_min' => 34,
+            'power_max' => 56,
+            'power' => 'A',
+            'speed' => 'A',
+            'range' => 'A',
+            'durability' => 'A',
+            'precision' => 'A',
+            'potential' => 'A',
+            'level_id' => 1,
+            'experience' => 16
         ]);
         App\User::create([
             'discord_id' => '481056864231227422',
@@ -41,7 +61,37 @@ class UsersTableSeeder extends Seeder
             'money' => 0,
             'userskin_id' => '3',
             'stand_id' => 4,
-            'level_id' => 1
+            'health' => 250,
+            'power_min' => 34,
+            'power_max' => 56,
+            'power' => 'A',
+            'speed' => 'A',
+            'range' => 'A',
+            'durability' => 'A',
+            'precision' => 'A',
+            'potential' => 'A',
+            'level_id' => 1,
+            'experience' => 0
+        ]);
+        App\User::create([
+            'discord_id' => '353408166773653514',
+            'username' => 'Illusive#3528',
+            'password' => Hash::make('password'),
+            'userlevel' => 'member',
+            'money' => 0,
+            'userskin_id' => '4',
+            'stand_id' => 5,
+            'health' => 250,
+            'power_min' => 34,
+            'power_max' => 56,
+            'power' => 'A',
+            'speed' => 'A',
+            'range' => 'A',
+            'durability' => 'A',
+            'precision' => 'A',
+            'potential' => 'A',
+            'level_id' => 1,
+            'experience' => 0
         ]);
     }
 }

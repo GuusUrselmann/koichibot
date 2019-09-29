@@ -25,5 +25,9 @@ class UserskinsTableSeeder extends Seeder
             'name' => 'Dog',
             'image' => 'userskins/Dog.png'
         ]);
+        App\Userskin::create([
+            'name' => 'trigger admin',
+            'image' => 'userskins/triggeradmin.png'
+        ]);
     }
 }
