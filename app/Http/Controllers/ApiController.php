@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\User;
 
 class ApiController extends Controller
 {
@@ -13,6 +14,27 @@ class ApiController extends Controller
 
     //Job command
     public function job() {
-        return "hello";
+        //test
+        //Make converter for stand stats
+        //get power stat
+        //random of 1
+        //random of 2
+        $user = User::find(2);
+        $damage1 = rand($user->power_min, $user->power_max);
+        echo $user->power_min.'/'.$user->power_max.'<br/>';
+        echo $damage1.'<br/>';
+        $power_alt = statToPercent($user->power);
+        echo $power_alt.'<br/>';
+        $d = ($user->power_max - $user->power_min) * ($power_alt);
+        $damage2 = rand(($user->power_min+$d), $user->power_max);
+        echo $damage2;
+    }
+
+    public function quest() {
+
+    }
+
+    public function search() {
+        
     }
 }

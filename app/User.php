@@ -48,7 +48,8 @@ class User extends Authenticatable
         return Userskin::find($this->userskin_id);
     }
 
-    public function level() {
-        return Level::find($this->level_id);
+    public function level($add = 0) {
+        $level = Level::where('level', $this->level_id)->first();
+        return Level::where('level', $level->level + $add)->first();
     }
 }

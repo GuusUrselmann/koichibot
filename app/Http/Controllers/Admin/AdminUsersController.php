@@ -41,9 +41,10 @@ class AdminUsersController extends Controller
             'user_username' => 'required|max:191',
             'user_power_min' => 'min:0',
             'user_power_max' => 'min:0',
-            'user_health' => 'min:0',
-            'user_speed' =>'min:0'
+            'user_health' => 'min:0'
         ]);
+        // TODO: add validations for every field
+        //
         if($validator->fails()) {
             $errors = $validator->errors();
             return redirect(url('/admin/users'));
@@ -51,10 +52,15 @@ class AdminUsersController extends Controller
         $user->update([
             'username' => $request->has('user_username') ? $request->input('user_username') : $user->username,
             'stand_id' => $request->has('user_stand_id') ? $request->input('user_stand_id') : $user->stand_id,
+            'health' => $request->has('user_health') ? $request->input('user_health') : $user->health,
             'power_min' => $request->has('user_power_min') ? $request->input('user_power_min') : $user->power_min,
             'power_max' => $request->has('user_power_max') ? $request->input('user_power_max') : $user->power_max,
-            'health' => $request->has('user_health') ? $request->input('user_health') : $user->health,
-            'speed' => $request->has('user_speed') ? $request->input('user_speed') : $user->speed
+            'power' => $request->has('user_power') ? $request->input('user_power') : $user->power,
+            'speed' => $request->has('user_speed') ? $request->input('user_speed') : $user->speed,
+            'range' => $request->has('user_range') ? $request->input('user_range') : $user->range,
+            'durability' => $request->has('user_durability') ? $request->input('user_durability') : $user->durability,
+            'precision' => $request->has('user_precision') ? $request->input('user_precision') : $user->precision,
+            'potential' => $request->has('user_potential') ? $request->input('user_potential') : $user->potential
         ]);
 
         return redirect(url('/admin/users'));
