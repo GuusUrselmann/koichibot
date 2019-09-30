@@ -53,45 +53,45 @@ class UsersTableSeeder extends Seeder
             'level_id' => 1,
             'experience' => 16
         ]);
-        App\User::create([
-            'discord_id' => '481056864231227422',
-            'username' => 'Dog#0002',
-            'password' => Hash::make('password'),
-            'userlevel' => 'member',
-            'money' => 0,
-            'userskin_id' => '3',
-            'stand_id' => 4,
-            'health' => 250,
-            'power_min' => 34,
-            'power_max' => 56,
-            'power' => 'A',
-            'speed' => 'A',
-            'range' => 'A',
-            'durability' => 'A',
-            'precision' => 'A',
-            'potential' => 'A',
-            'level_id' => 1,
-            'experience' => 0
-        ]);
-        App\User::create([
-            'discord_id' => '353408166773653514',
-            'username' => 'Illusive#3528',
-            'password' => Hash::make('password'),
-            'userlevel' => 'member',
-            'money' => 0,
-            'userskin_id' => '4',
-            'stand_id' => 5,
-            'health' => 250,
-            'power_min' => 34,
-            'power_max' => 56,
-            'power' => 'A',
-            'speed' => 'A',
-            'range' => 'A',
-            'durability' => 'A',
-            'precision' => 'A',
-            'potential' => 'A',
-            'level_id' => 1,
-            'experience' => 0
-        ]);
+        // App\User::create([
+        //     'discord_id' => '481056864231227422',
+        //     'username' => 'Dog#0002',
+        //     'password' => Hash::make('password'),
+        //     'userlevel' => 'member',
+        //     'money' => 0,
+        //     'userskin_id' => '3',
+        //     'stand_id' => 4,
+        //     'health' => 250,
+        //     'power_min' => 34,
+        //     'power_max' => 56,
+        //     'power' => 'A',
+        //     'speed' => 'A',
+        //     'range' => 'A',
+        //     'durability' => 'A',
+        //     'precision' => 'A',
+        //     'potential' => 'A',
+        //     'level_id' => 1,
+        //     'experience' => 0
+        // ]);
+        // App\User::create([
+        //     'discord_id' => '353408166773653514',
+        //     'username' => 'Illusive#3528',
+        //     'password' => Hash::make('password'),
+        //     'userlevel' => 'member',
+        //     'money' => 0,
+        //     'userskin_id' => '4',
+        //     'stand_id' => 5,
+        //     'health' => 250,
+        //     'power_min' => 34,
+        //     'power_max' => 56,
+        //     'power' => 'A',
+        //     'speed' => 'A',
+        //     'range' => 'A',
+        //     'durability' => 'A',
+        //     'precision' => 'A',
+        //     'potential' => 'A',
+        //     'level_id' => 1,
+        //     'experience' => 0
+        // ]);
     }
 }

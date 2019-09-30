@@ -67,16 +67,24 @@
     }
     .block-body {
         .user-profile {
-            width: 300px;
+            width: 350px;
             float: left;
             padding-top: 40px;
             .profile-level {
                 width: 100%;
                 text-align: center;
                 font-size: 32px;
+                input {
+                    border: none;
+                    font-size: 32px;
+                    height: 32px;
+                    width: 70px;
+                    border-bottom: 1px solid #EA2790;
+                }
             }
             .userskin-name {
-                width: 100%;
+                margin: auto;
+                width: 150px;
                 text-align: center;
                 margin-top: 5px;
                 margin-bottom: 10px;
@@ -113,10 +121,60 @@
                 text-align: center;
                 margin-bottom: 20px;
                 font-size: 16px;
+                input {
+                    border: none;
+                    font-size: 16px;
+                    height: 24px;
+                    width: 70px;
+                    border-bottom: 1px solid #EA2790;
+                }
+            }
+            .user-info {
+                padding-left: 10%;
+                .list-title {
+                    width: 100%;
+                    font-size: 30px;
+                    border-bottom: 2px solid #EA2790;
+                    padding-left: 5px;
+                }
+                .list-items {
+                    margin-top: 20px;
+                    table {
+                        tr {
+                            td {
+                                padding: 2.5px 0px;
+                                padding-right: 15px;
+                                input {
+                                    border: none;
+                                    width: 80px;
+                                    padding-left: 2px;
+                                    font-size: 16px;
+                                    border-bottom: 1px solid #EA2790;
+                                    &.wideInput {
+                                        width: 100%;
+                                    }
+                                }
+                                .form-select {
+                                    border: none;
+                                    width: 80px;
+                                    padding-left: 2px;
+                                    font-size: 16px;
+                                    border-bottom: 1px solid #EA2790;
+                                    &.wideInput {
+                                        width: 100%;
+                                    }
+                                }
+                                &:nth-child(2) {
+                                    padding-right: 0px;
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
         .user-stats {
-            width: calc(100% - 300px);
+            width: calc(100% - 350px);
             float: left;
             padding: 100px 30px 60px 100px;
             .stats-list {

@@ -12,20 +12,63 @@
             <div class="block-body">
                 <div class="user-profile">
                     <div class="profile-level">
-                        LVL {{$user->level()->level}}
+                        LVL <input id="level" type="text" name="user_level" value="{{$user->level()->level ? $user->level()->level : ''}}">
                     </div>
                     <div class="userskin-name">
-                        {{$user->userskin()->name}}
+                        <div class="form-select" id="userSkin">
+                            <input class="select-input" type=hidden name="user_userskin_id" value="{{$user->userskin_id}}">
+                            <div class="select-current">
+                                {{$user->userskin()->name}}
+                            </div>
+                            <ul class="select-list">
+                                @foreach($userskins as $userskin)
+                                    <li data-image="{{asset('images/'.$userskin->image)}}" data-id="{{$userskin->id}}"><div class="item-image background-cover" style="background-image: url({{asset('images/'.$userskin->image)}})"></div>{{$userskin->name}}</li>
+                                @endforeach
+                            </ul>
+                        </div>
                     </div>
                     <div class="profile-userskin">
                         <canvas id="progressChart" width="220" height="220"></canvas>
                         <div class="userskin-shadow">
                         </div>
-                        <div class="userskin-inner background-cover" style="background-image: url({{asset('images/'.$user->userskin()->image)}})">
+                        <div id="skin" class="userskin-inner background-cover" style="background-image: url({{asset('images/'.$user->userskin()->image)}})">
                         </div>
                     </div>
                     <div class="profile-experience">
-                        {{$user->experience}} / {{$user->level(1)->experience}} Exp
+                        <input id="levelExpMin" type="text" name="user_experience" value="{{$user->experience}}"> / <span id="levelExpMax">{{$user->level(1)->experience}}</span> Exp
+                    </div>
+                    <div class="user-info">
+                        <div class="list-title">
+                            Info
+                        </div>
+                        <div class="list-items">
+                            <table>
+                                <tr>
+                                    <td>Discord ID</td>
+                                    <td><input class="wideInput" type="text" name="user_discord_id" value="{{$user->discord_id}}"></td>
+                                </tr>
+                                <tr>
+                                    <td>Userlevel</td>
+                                    <td>
+                                        <div class="form-select">
+                                            <input class="select-input" type=hidden name="user_userlevel" value="{{$user->userlevel}}">
+                                            <div class="select-current">
+                                                {{$user->userlevel}}
+                                            </div>
+                                            <ul class="select-list">
+                                                <li data-id="member">member</li>
+                                                <li data-id="admin">admin</li>
+                                                <li data-id="owner">owner</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Money</td>
+                                    <td><input type="text" name="user_money" value="{{$user->money}}"></td>
+                                </tr>
+                            </table>
+                        </div>
                     </div>
                 </div>
                 <div class="user-stats">
@@ -35,8 +78,8 @@
                         </div>
                         <div class="list-body">
                             <div class="stand" id="userStand">
-                                <input id="userStandId" type=hidden name="user_stand_id" value="{{$user->stand_id}}">
                                 <div class="form-select">
+                                    <input class="select-input" type=hidden name="user_stand_id" value="{{$user->stand_id}}">
                                     <div class="select-current">
                                         {{$user->stand_id ? $user->stand()->name : 'No stand'}}
                                     </div>

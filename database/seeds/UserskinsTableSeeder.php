@@ -21,13 +21,13 @@ class UserskinsTableSeeder extends Seeder
             'name' => 'Platigarde',
             'image' => 'userskins/Platigarde.png'
         ]);
-        App\Userskin::create([
-            'name' => 'Dog',
-            'image' => 'userskins/Dog.png'
-        ]);
-        App\Userskin::create([
-            'name' => 'trigger admin',
-            'image' => 'userskins/triggeradmin.png'
-        ]);
+        // App\Userskin::create([
+        //     'name' => 'Dog',
+        //     'image' => 'userskins/Dog.png'
+        // ]);
+        // App\Userskin::create([
+        //     'name' => 'trigger admin',
+        //     'image' => 'userskins/triggeradmin.png'
+        // ]);
     }
 }

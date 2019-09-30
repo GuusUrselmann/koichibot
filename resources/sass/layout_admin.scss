@@ -484,449 +484,56 @@ main {
     }
 }
 
-/*FORMS*/
-.form {
-    width: 100%;
-    .form-row {
-        width: 100%;
-        margin-bottom: 15px;
-        .form-input {
-            padding-left: 15px;
-            .input-label {
-
-                width: 100%;
-                line-height: 20px;
-                margin-bottom: 5px;
-                height: 20px;
-                label {
-                    line-height: 20px;
-                    font-size: 18px;
-                    color: #505050;
-                }
-            }
-            .input-errors {
-                width: 80%;
-                line-height: 18px;
-                font-size: 14px;
-                color: #fff;
-                background-color: #f55;
-                margin: 5px 0px;
-                padding: 5px;
-                border-radius: 3px;
-            }
-            &.text {
-                width: 50%;
-                .input {
-                    width: 80%;
-                    height: 35px;
-                    input {
-                        width: 100%;
-                        height: 100%;
-                        border: none;
-                        padding: 5px 10px;
-                        font-size: 18px;
-                        border-bottom: 2px solid #444;
-                        &:focus {
-                            border-bottom: 2px solid #EA2790;
-                        }
-                    }
-                }
-            }
-            &.textarea {
-                width: 100%;
-                .input {
-                    textarea {
-                        width: 60%;
-                        height: 200px;
-                        padding: 5px 10px;
-                        font-size: 18px;
-                        border: 2px solid #444;
-                        &:focus {
-                            border: 2px solid #EA2790;
-                        }
-                    }
-                }
-            }
-            &.select {
-                width: 50%;
-                .input {
-                    select {
-                        width: 50%;
-                        height: 35px;
-                        padding: 5px 10px;
-                        font-size: 18px;
-                        border: 2px solid #444;
-                        &:focus {
-                            border: 2px solid #EA2790;
-                        }
-                    }
-                }
-            }
-            &.num {
-                width: 50%;
-                .input {
-                    input {
-                        width: 40%;
-                        height: 35px;
-                        padding: 5px 10px;
-                        font-size: 18px;
-                        border: 2px solid #444;
-                        &:focus {
-                            border: 2px solid #EA2790;
-                        }
-                    }
-                }
-            }
-            &.image {
-                width: 100%;
-                .input {
-                    .button {
-                        width: 150px;
-                        height: 35px;
-                        background-color: #fff;
-                        border: 2px solid #444;
-                        font-size: 18px;
-                        line-height: 35px;
-                        text-align: center;
-
-                    }
-                    input {
-                        width: 150px;
-                        height: 35px;
-                        position: relative;
-                        top: -35px;
-                        left: 0;
-                        opacity: 0;
-
-                    }
-                }
-                .preview {
-                    display: none;
-                    width: 300px;
-                    height: 150px;
-                    &.shown {
-                        display: block;
-                    }
-                }
-            }
-            &.color {
-                width: 50%;
-                float: left;
-                .input {
-                    width: 100px;
-                    height: 35px;
-                    input {
-                        width: calc(100%);
-                        height: 100%;
-                        border: none;
-                        background-color: #fff;
-                        padding: 5px 10px;
-                        font-size: 18px;
-                        border-bottom: 2px solid #444;
-                        &:focus {
-                            border-bottom: 2px solid #EA2790;
-                        }
-                    }
-                }
-            }
-            &.password {
-                width: 50%;
-                .input {
-                    width: 80%;
-                    height: 35px;
-                    input {
-                        width: calc(100% - 35px);
-                        height: 100%;
-                        border: none;
-                        padding: 5px 10px;
-                        font-size: 18px;
-                        border-bottom: 2px solid #444;
-                        &:focus {
-                            border-bottom: 2px solid #EA2790;
-                        }
-                    }
-                    .password-toggle {
-                        width: 35px;
-                        height: 100%;
-                        display: block;
-                        float: right;
-                        border: 2px solid #444;
-                        line-height: 35px;
-                        text-align: center;
-                        color: #595959;
-                        background-color: #c3c3c3;
-                        box-sizing: border-box;
-                        &.toggled {
-                            color: #fff;
-                            background-color: #50b038;
-                        }
-                    }
-                }
-            }
-            &.relation {
-                width: 100%;
-                .relation-add {
-                    width: 100px;
-                    height: 30px;
-                    .add-button {
-                        width: 100%;
-                        height: 100%;
-                        line-height: 30px;
-                        color: #fff;
-                        .add-left {
-                            width: 30px;
-                            height: 100%;
-                            float: left;
-                            background-color: #444;
-                            text-align: center;
-                        }
-                        .add-right {
-                            width: 70px;
-                            height: 30px;
-                            float: left;
-                            padding-left: 5px;
-                            font-weight: 600;
-                            background-color: #fff;
-                            //border: 2px solid #ddd;
-                            color: #444;
-                            border: 1px solid #444;
-                            border-left: none;
-                        }
-                        &:hover {
-                            .add-right {
-                                background-color: #444;
-                                color: #fff;
-                                cursor: pointer;
-                            }
-                        }
-                    }
-                }
-                .relations {
-                    .relation {
-                        .relation-row {
-                            margin: 5px 0px;
-                            width: 500px;
-                            height: 80px;
-                            .relation-left {
-                                float: left;
-                                width: 50%;
-                                padding: 5px;
-                                background-color: #a2a2a2;
-                                border: 2px solid #444;
-                                .relation-label {
-                                    height: 30px;
-                                    line-height: 30px;
-                                    color: #fff;
-                                    .relation-remove {
-                                        width: 30px;
-                                        height: 30px;
-                                        display: none;
-                                        float: right;
-                                        color: #df2525;
-                                        &:hover {
-                                            cursor: pointer;
-                                        }
-                                    }
-                                }
-                                .relation-input {
-                                    width: 100%;
-                                    height: 30px;
-                                    select {
-                                        width: 100%;
-                                        height: 100%;
-                                        font-size: 18px;
-                                        border: 1px solid #444;
-                                    }
-                                }
-                                &:hover {
-                                    .relation-label {
-                                        .relation-remove {
-                                            display: block;
-                                        }
-                                    }
-                                }
-                            }
-                            .relation-right {
-                                float: left;
-                                width: 48%;
-                                margin-left: 2%;
-                                padding: 5px;
-                                background-color: #a2a2a2;
-                                border: 2px solid #444;
-                                .answer-label {
-                                    height: 30px;
-                                    line-height: 30px;
-                                    color: #fff;
-                                }
-                                .answer-input {
-                                    width: 100%;
-                                    height: 30px;
-                                    select {
-                                        width: 100%;
-                                        height: 100%;
-                                        font-size: 18px;
-                                        border: 1px solid #444;
-                                    }
-                                    input {
-                                        width: 100%;
-                                        height: 100%;
-                                        padding-left: 3px;
-                                        font-size: 16px;
-                                        border: 1px solid #444;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            &.answers {
-                .input {
-                    .type-answer {
-                        width: 100%;
-                        min-height: 50px;
-                        display: none;
-                        &.active {
-                            display: block;
-                        }
-                        &.text {
-
-                        }
-                        &.select {
-                            .answer-add {
-                                height: 30px;
-                                width: 100%;
-                                .add-button {
-                                    float: left;
-                                    height: 100%;
-                                    line-height: 30px;
-                                    color: #fff;
-                                    .add-left {
-                                        width: 30px;
-                                        height: 100%;
-                                        float: left;
-                                        background-color: #444;
-                                        text-align: center;
-                                    }
-                                    .add-right {
-                                        width: 70px;
-                                        height: 30px;
-                                        float: left;
-                                        padding-left: 5px;
-                                        font-weight: 600;
-                                        background-color: #fff;
-                                        //border: 2px solid #ddd;
-                                        color: #444;
-                                        border: 1px solid #444;
-                                        border-left: none;
-                                    }
-                                    &:hover {
-                                        .add-right {
-                                            background-color: #444;
-                                            color: #fff;
-                                            cursor: pointer;
-                                        }
-                                    }
-                                }
-                            }
-                            .answers-list {
-                                width: 100%;
-                                padding: 10px;
-                                .answer-field {
-                                    width: 250px;
-                                    height: 35px;
-                                    margin: 5px 0px;
-                                    border: 2px solid #444;
-                                    padding: 2.5px;
-                                    background-color: #a2a2a2;
-                                    &:hover {
-                                        span {
-                                            display: block;
-                                        }
-                                    }
-                                    input {
-                                        width: 210px;
-                                        height: 35px;
-                                        float: left;
-                                        padding-left: 5px;
-                                        font-size: 20px;
-                                        border: 1px solid #444;
-                                    }
-                                    span {
-                                        width: 35px;
-                                        height: 35px;
-                                        margin-left: 5px;
-                                        font-size: 26px;
-                                        display: none;
-                                        line-height: 35px;
-                                        text-align: center;
-                                        float: left;
-                                        i {
-                                            color: #df2525;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        .form-submit {
-            padding-left: 15px;
-            .submit {
-                width: auto;
-                min-width: 150px;
-                height: 45px;
-                border: none;
-                background-color: #50b038;
-                color: #fff;
-                font-size: 18px;
-                padding: 0px 10px;
-            }
-        }
-    }
-}
-
 /*Beautiform*/
 
 .form-select {
-    .select {
-        width: 60%;
-        height: 25px;
-        .select-current {
-            width: calc(100% -20px);
-            height: 100%;
-            line-height: 25px;
-            font-size: 16px;
+    width: 100%;
+    height: 25px;
+    .select-current {
+        width: calc(100% -20px);
+        height: 100%;
+        line-height: 25px;
+        font-size: 16px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    .select-list {
+        display: none;
+        position: relative;
+        background-color: #fff;
+        border: 2px solid #EA2790;
+        max-height: 400px;
+        overflow-y: auto;
+        text-align: left;
+        z-index: 999;
+        li {
+            width: 100%;
+            height: 30px;
             text-overflow: ellipsis;
             overflow: hidden;
             white-space: nowrap;
+            padding-left: 5px;
+            line-height: 30px;
+            box-sizing: border-box;
+            .item-image {
+                width: 28px;
+                height: 28px;
+                float: left;
+                margin: 1px 5px;
+                margin-left: 0px;
+                border-radius: 50%;
+            }
             &:hover {
+                background-color: #ddd;
                 cursor: pointer;
             }
         }
-        .select-list {
-            display: none;
-            position: relative;
-            background-color: #fff;
-            border: 2px solid #EA2790;
-            li {
-                width: 100%;
-                height: 25px;
-                text-overflow: ellipsis;
-                overflow: hidden;
-                white-space: nowrap;
-                padding: 2.5px 5px;
-                box-sizing: border-box;
-                &:hover {
-                    background-color: #ddd;
-                    cursor: pointer;
-                }
-            }
-            &.toggled {
-                display: block!important;
-            }
+        &.toggled {
+            display: block!important;
         }
     }
 }

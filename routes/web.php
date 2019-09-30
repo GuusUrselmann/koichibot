@@ -22,15 +22,16 @@ Route::group(['prefix' => '/admin'], function() {
   Route::group(['prefix' => 'dashboard'], function() {
       Route::get('/', 'Admin\AdminDashboardController@dashboard');
   });
-  Route::group(['prefix' => 'users'], function() {
+  Route::group(['prefix' => '/users'], function() {
       Route::get('/', 'Admin\AdminUsersController@users');
       Route::get('/{id}/edit', 'Admin\AdminUsersController@userEdit');
       Route::post('/{id}/edit', 'Admin\AdminUsersController@userEditSave');
+      Route::post('/ajaxLevel','Admin\AdminUsersController@ajaxLevel');
   });
-  Route::group(['prefix' => 'stands'], function() {
+  Route::group(['prefix' => '/stands'], function() {
       Route::get('/', 'Admin\AdminStandsController@stands');
   });
-  Route::group(['prefix' => 'levels'], function() {
+  Route::group(['prefix' => '/levels'], function() {
       Route::get('/', 'Admin\AdminLevelsController@levels');
   });
 });

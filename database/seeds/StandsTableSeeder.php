@@ -28,16 +28,16 @@ class StandsTableSeeder extends Seeder
             'lore' => 'Lorum ipsum dolor sit amet Lorum ipsum dolor sit amet Lorum ipsum dolor sit amet Lorum ipsum dolor sit amet Lorum ipsum dolor sit amet',
             'image' => 'stands/KingCrimson.png'
         ]);
-        App\Stand::create([
-            'name' => 'Dog\'s Stand',
-            'lore' => 'Lorum ipsum dolor sit amet Lorum ipsum dolor sit amet Lorum ipsum dolor sit amet Lorum ipsum dolor sit amet Lorum ipsum dolor sit amet',
-            'image' => 'stands/DogsStand.png'
-        ]);
-        App\Stand::create([
-            'name' => 'Waste Of Nut',
-            'lore' => 'Lorum ipsum dolor sit amet Lorum ipsum dolor sit amet Lorum ipsum dolor sit amet Lorum ipsum dolor sit amet Lorum ipsum dolor sit amet',
-            'image' => 'stands/WasteOfNut.png'
-        ]);
+        // App\Stand::create([
+        //     'name' => 'Dog\'s Stand',
+        //     'lore' => 'Lorum ipsum dolor sit amet Lorum ipsum dolor sit amet Lorum ipsum dolor sit amet Lorum ipsum dolor sit amet Lorum ipsum dolor sit amet',
+        //     'image' => 'stands/DogsStand.png'
+        // ]);
+        // App\Stand::create([
+        //     'name' => 'Waste Of Nut',
+        //     'lore' => 'Lorum ipsum dolor sit amet Lorum ipsum dolor sit amet Lorum ipsum dolor sit amet Lorum ipsum dolor sit amet Lorum ipsum dolor sit amet',
+        //     'image' => 'stands/WasteOfNut.png'
+        // ]);
         App\Stand::create([
             'name' => 'White Album',
             'lore' => 'Lorum ipsum dolor sit amet Lorum ipsum dolor sit amet Lorum ipsum dolor sit amet Lorum ipsum dolor sit amet Lorum ipsum dolor sit amet',

@@ -65,7 +65,7 @@
 }
 
 #userEdit.content-block .block-body .user-profile {
-  width: 300px;
+  width: 350px;
   float: left;
   padding-top: 40px;
 }
@@ -76,8 +76,17 @@
   font-size: 32px;
 }
 
+#userEdit.content-block .block-body .user-profile .profile-level input {
+  border: none;
+  font-size: 32px;
+  height: 32px;
+  width: 70px;
+  border-bottom: 1px solid #EA2790;
+}
+
 #userEdit.content-block .block-body .user-profile .userskin-name {
-  width: 100%;
+  margin: auto;
+  width: 150px;
   text-align: center;
   margin-top: 5px;
   margin-bottom: 10px;
@@ -121,8 +130,64 @@
   font-size: 16px;
 }
 
+#userEdit.content-block .block-body .user-profile .profile-experience input {
+  border: none;
+  font-size: 16px;
+  height: 24px;
+  width: 70px;
+  border-bottom: 1px solid #EA2790;
+}
+
+#userEdit.content-block .block-body .user-profile .user-info {
+  padding-left: 10%;
+}
+
+#userEdit.content-block .block-body .user-profile .user-info .list-title {
+  width: 100%;
+  font-size: 30px;
+  border-bottom: 2px solid #EA2790;
+  padding-left: 5px;
+}
+
+#userEdit.content-block .block-body .user-profile .user-info .list-items {
+  margin-top: 20px;
+}
+
+#userEdit.content-block .block-body .user-profile .user-info .list-items table tr td {
+  padding: 2.5px 0px;
+  padding-right: 15px;
+}
+
+#userEdit.content-block .block-body .user-profile .user-info .list-items table tr td input {
+  border: none;
+  width: 80px;
+  padding-left: 2px;
+  font-size: 16px;
+  border-bottom: 1px solid #EA2790;
+}
+
+#userEdit.content-block .block-body .user-profile .user-info .list-items table tr td input.wideInput {
+  width: 100%;
+}
+
+#userEdit.content-block .block-body .user-profile .user-info .list-items table tr td .form-select {
+  border: none;
+  width: 80px;
+  padding-left: 2px;
+  font-size: 16px;
+  border-bottom: 1px solid #EA2790;
+}
+
+#userEdit.content-block .block-body .user-profile .user-info .list-items table tr td .form-select.wideInput {
+  width: 100%;
+}
+
+#userEdit.content-block .block-body .user-profile .user-info .list-items table tr td:nth-child(2) {
+  padding-right: 0px;
+}
+
 #userEdit.content-block .block-body .user-stats {
-  width: calc(100% - 300px);
+  width: calc(100% - 350px);
   float: left;
   padding: 100px 30px 60px 100px;
 }
