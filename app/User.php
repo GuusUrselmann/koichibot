@@ -19,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'discord_id', 'username', 'password', 'userlevel', 'money', 'userskin_id', 'stand_id', 'health', 'power_min', 'power_max', 'power', 'speed', 'range', 'durability', 'precision', 'potential', 'level_id', 'experience'
+        'discord_id', 'username', 'password', 'userlevel', 'money', 'userskin_id', 'stand_id', 'health', 'power_min', 'power_max', 'power', 'speed', 'range', 'durability', 'precision', 'potential', 'level_id', 'experience', 'unlocks_userskins'
     ];
 
     /**
@@ -51,5 +51,13 @@ class User extends Authenticatable
     public function level($add = 0) {
         $level = Level::where('level', $this->level_id)->first();
         return Level::where('level', $level->level + $add)->first();
+    }
+
+    public function unlockedUserskin($id) {
+        $unlocks = explode(',', $this->unlocks_userskins);
+        if(in_array($id, $unlocks)) {
+            return true;
+        }
+        return false;
     }
 }

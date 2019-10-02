@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="content-block" id="userEdit">
-        <form method="POST" action="" enctype="multipart/form-data">
+        <form id="userEditForm" method="POST" action="" enctype="multipart/form-data" >
             @csrf
             <div class="block-header">
                 <div class="block-title">
@@ -21,7 +21,7 @@
                                 {{$user->userskin()->name}}
                             </div>
                             <ul class="select-list">
-                                @foreach($userskins as $userskin)
+                                @foreach($userskins_unlocked as $userskin)
                                     <li data-image="{{asset('images/'.$userskin->image)}}" data-id="{{$userskin->id}}"><div class="item-image background-cover" style="background-image: url({{asset('images/'.$userskin->image)}})"></div>{{$userskin->name}}</li>
                                 @endforeach
                             </ul>
@@ -154,13 +154,39 @@
         </form>
     </div>
 
-    <div class="content-block" id="userLogs">
+    <div class="content-block" id="userUnlocks">
         <div class="block-header">
             <div class="block-title">
-                Logs
+                Unlocks
             </div>
         </div>
         <div class="block-body">
+            <div class="unlocks">
+                <div class="unlock">
+                    <input class="unlock-input" form="userEditForm" type="hidden" name="user_unlocks_userskins" value="{{$user->unlocks_userskins}}">
+                    <div class="unlock-title">
+                        User skins<span class="unlock-add"><i class="fa fas far fal fab fa-plus"></i></span>
+                        <div class="add-list">
+                            <ul>
+                                @forelse($userskins as $userskin)
+                                    <li data-id="{{$userskin->id}}" data-image="{{asset('images/'.$userskin->image)}}" class="selectable {{$user->unlockedUserskin($userskin->id) ? 'hidden' : ''}}"><div class="unlock-image background-cover" style="background-image: url({{asset('images/'.$userskin->image)}})"></div><span class="unlock-name">{{$userskin->name}}</span></li>
+                                @empty
+                                    <li class="empty">No user skins found</li>
+                                @endforelse
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="unlock-list">
+                        <ul>
+                            @forelse($userskins_unlocked as $userskin)
+                                <li data-id="{{$userskin->id}}" class="selectable"><div class="unlock-image background-cover" style="background-image: url({{asset('images/'.$userskin->image)}})"></div><span class="unlock-name">{{$userskin->name}}</span><span class="unlock-remove"><i class="fa fas far fal fab fa-times"></i></span></li>
+                            @empty
+                                <li class="empty">No user skins unlocked</li>
+                            @endforelse
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

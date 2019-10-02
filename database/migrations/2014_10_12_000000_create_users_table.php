@@ -34,6 +34,7 @@ class CreateUsersTable extends Migration
             $table->text('abilities', 155)->nullable();
             $table->integer('level_id')->unsigned()->nullable();
             $table->integer('experience')->nullable();
+            $table->text('unlocks_userskins')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

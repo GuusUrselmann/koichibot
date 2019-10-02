@@ -31,7 +31,8 @@ class UsersTableSeeder extends Seeder
             'precision' => 'A',
             'potential' => 'A',
             'level_id' => 1,
-            'experience' => 0
+            'experience' => 0,
+            'unlocks_userskins' => '2'
         ]);
         App\User::create([
             'discord_id' => '278550031848570881',
@@ -51,7 +52,8 @@ class UsersTableSeeder extends Seeder
             'precision' => 'A',
             'potential' => 'A',
             'level_id' => 1,
-            'experience' => 16
+            'experience' => 16,
+            'unlocks_userskins' => '1,2'
         ]);
         // App\User::create([
         //     'discord_id' => '481056864231227422',

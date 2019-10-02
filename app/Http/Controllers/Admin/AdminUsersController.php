@@ -23,34 +23,59 @@ class AdminUsersController extends Controller
         return view('admin/users/users', compact('users'));
     }
 
+    public function userAdd() {
+        return view('admin/users/userAdd', compact('stands'));
+    }
+
     public function userEdit($id) {
         $user = User::find($id);
         if(!$user) {
-            return redirect('/');
+            return redirect('/admin/users');
         }
         $stands = Stand::orderBy('name')->get();
         (array) $stands;
         $userskins = Userskin::orderBy('name')->get();
         (array) $userskins;
+        $userskins_unlocked_ids = explode(',', $user->unlocks_userskins);
+        $userskins_unlocked = Userskin::findMany($userskins_unlocked_ids);
+        (array) $userskins_unlocked;
 
-        return view('admin/users/userEdit', compact('user', 'stands', 'userskins'));
+        return view('admin/users/userEdit', compact('user', 'stands', 'userskins', 'userskins_unlocked'));
     }
 
     public function userEditSave($id, Request $request) {
 
         $user = User::find($id);
         if(!$user) {
-            return redirect('/');
+            return redirect('/admin/users');
         }
+        $power_min = $request->has('user_power_min') ? $request->input('user_power_min') : $user->power_min;
+        $level_level = $request->has('user_level') ? $request->input('user_level') : $user->level;
+        $level = Level::where('level', $level_level+1)->first();
         $validator = Validator::make($request->all(), [
-            'user_username' => 'required|max:191',
-            'user_stand_id' => 'required'
+            'user_discord_id' => ['required', 'numeric', 'min:0'],
+            'user_username' => ['required', 'regex:/^[a-zA-Z0-9]+#[0-9]{4}$/'],
+            'user_userlevel' => ['required', 'in:owner,admin,member'],
+            'user_money' => ['required', 'numeric', 'min:0'],
+            'user_stand_id' => ['numeric', 'min:0'],
+            'user_health' => ['required', 'numeric', 'min:0'],
+            'user_power_min' => ['numeric', 'min:0'],
+            'user_power_max' => ['numeric', 'min:'.$power_min],
+            'user_power' => ['in:E,D,C,B,A,UNKNOWN'],
+            'user_speed' => ['in:E,D,C,B,A,UNKNOWN'],
+            'user_range' => ['in:E,D,C,B,A,UNKNOWN'],
+            'user_durability' => ['in:E,D,C,B,A,UNKNOWN'],
+            'user_precision' => ['in:E,D,C,B,A,UNKNOWN'],
+            'user_potential' => ['in:E,D,C,B,A,UNKNOWN'],
+            'user_level' => ['required', 'numeric', 'min:0'],
+            'user_experience' => ['required', 'numeric', 'min:0', 'max:'.$level->experience],
+            'user_unlocks_userskins' => ['required', 'regex:/^\d+(,\d+)*$/']
         ]);
-        // TODO: add validations for every field
+        // TODO: addalidation and leveling up for experience????
         //
         if($validator->fails()) {
             $errors = $validator->errors();
-            return redirect(url('/admin/users/add'))->with('errors', $errors);
+            return redirect(url('/admin/users/'.$user->id.'/edit'))->with('errors', $errors);
         }
         $level_id = Level::where('level', $request->has('user_level') ? $request->input('user_level') : $user->level()->level)->first()->id;
         $user->update([
@@ -70,7 +95,8 @@ class AdminUsersController extends Controller
             'precision' => $request->has('user_precision') ? $request->input('user_precision') : $user->precision,
             'potential' => $request->has('user_potential') ? $request->input('user_potential') : $user->potential,
             'level_id' => $level_id,
-            'experience' => $request->has('user_experience') ? $request->input('user_experience') : $user->experience
+            'experience' => $request->has('user_experience') ? $request->input('user_experience') : $user->experience,
+            'unlocks_userskins' => $request->has('user_unlocks_userskins') ? $request->input('user_unlocks_userskins') : $user->unlocks_userskins
         ]);
 
         return redirect(url('/admin/users'));

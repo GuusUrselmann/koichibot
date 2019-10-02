@@ -273,7 +273,7 @@
 
 #userEdit.content-block .block-body .user-stats .stats-list .list-body .list-items table tr td input {
   border: none;
-  width: 80px;
+  width: 100px;
   margin-left: 15px;
   padding-left: 2px;
   font-size: 16px;
@@ -429,5 +429,131 @@
   cursor: pointer;
   background-color: #fff;
   color: #28a824;
+}
+
+#userUnlocks .block-body .unlocks {
+  width: calc(100% - 50px);
+  margin: 25px;
+}
+
+#userUnlocks .block-body .unlocks .unlock {
+  width: 100%;
+}
+
+#userUnlocks .block-body .unlocks .unlock .unlock-title {
+  height: 35px;
+  line-height: 35px;
+  background-color: #2d2d2d;
+  color: #fff;
+  padding: 0px 7px;
+}
+
+#userUnlocks .block-body .unlocks .unlock .unlock-title .unlock-add {
+  float: right;
+  width: 25px;
+  height: 25px;
+  background-color: #28a824;
+  margin-top: 5px;
+  line-height: 25px;
+  text-align: center;
+  font-size: 16px;
+}
+
+#userUnlocks .block-body .unlocks .unlock .unlock-title .add-list {
+  width: calc(100% + 14px);
+  margin-left: -7px;
+  position: relative;
+  background-color: #fff;
+  border: 2px solid #ea2790;
+  color: #000;
+  display: none;
+  min-height: 35px;
+  padding: 5px 0px;
+}
+
+#userUnlocks .block-body .unlocks .unlock .unlock-title .add-list ul li.selectable {
+  width: 100%;
+  height: 25px;
+  line-height: 25px;
+}
+
+#userUnlocks .block-body .unlocks .unlock .unlock-title .add-list ul li.selectable .unlock-image {
+  width: 23px;
+  height: 23px;
+  margin: 1px 5px;
+  float: left;
+  position: absolute;
+}
+
+#userUnlocks .block-body .unlocks .unlock .unlock-title .add-list ul li.selectable .unlock-name {
+  padding-left: 33px;
+}
+
+#userUnlocks .block-body .unlocks .unlock .unlock-title .add-list ul li.selectable.hidden {
+  display: none;
+}
+
+#userUnlocks .block-body .unlocks .unlock .unlock-title .add-list ul li.selectable:hover {
+  background-color: #ddd;
+  cursor: pointer;
+}
+
+#userUnlocks .block-body .unlocks .unlock .unlock-title .add-list.toggled {
+  display: block;
+}
+
+#userUnlocks .block-body .unlocks .unlock .unlock-list {
+  width: 100%;
+  border: 2px solid #2d2d2d;
+  border-top: none;
+  padding: 5px 0px;
+}
+
+#userUnlocks .block-body .unlocks .unlock .unlock-list ul li.selectable {
+  width: 100%;
+  height: 25px;
+  padding-left: 5px;
+  box-sizing: border-box;
+}
+
+#userUnlocks .block-body .unlocks .unlock .unlock-list ul li.selectable .unlock-image {
+  width: 23px;
+  height: 23px;
+  margin: 1px 5px;
+  margin-right: 5px;
+  float: left;
+  border-radius: 50%;
+}
+
+#userUnlocks .block-body .unlocks .unlock .unlock-list ul li.selectable .unlock-name {
+  width: calc(100% - 100px);
+  display: block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  line-height: 25px;
+  white-space: nowrap;
+}
+
+#userUnlocks .block-body .unlocks .unlock .unlock-list ul li.selectable .unlock-remove {
+  float: right;
+  width: 20px;
+  height: 20px;
+  background-color: #f92a2a;
+  line-height: 20px;
+  margin-top: -22.5px;
+  margin-right: 5px;
+  text-align: center;
+  font-size: 16px;
+  color: #fff;
+  display: none;
+}
+
+#userUnlocks .block-body .unlocks .unlock .unlock-list ul li.selectable:hover {
+  background-color: #ddd;
+  cursor: pointer;
+}
+
+#userUnlocks .block-body .unlocks .unlock .unlock-list ul li.selectable:hover .unlock-remove {
+  display: block;
 }
 
