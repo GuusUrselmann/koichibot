@@ -14,9 +14,9 @@ class ApiController extends Controller
 
     //Job command
     public function stand(Request $request) {
-        return $request->all();
-        $user = User::find(2);
-        return $user;
+        return $response()->json([
+            'data' => $request->all();
+        ]);
         // $damage1 = rand($user->power_min, $user->power_max);
         // echo $user->power_min.'/'.$user->power_max.'<br/>';
         // echo $damage1.'<br/>';
