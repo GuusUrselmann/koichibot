@@ -15,8 +15,11 @@ class ApiController extends Controller
     //Job command
     public function stand(Request $request) {
         $dataPost = $request->all();
-        $user = User::where('username', $dataPost['username'])->with('stand')->first();
-        return $user;
+        $user = User::with('stand')->where('username', $dataPost['username'])->first();
+        $data = [
+            'user' => $user
+        ];
+        return $data;
 
         // $damage1 = rand($user->power_min, $user->power_max);
         // echo $user->power_min.'/'.$user->power_max.'<br/>';

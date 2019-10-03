@@ -44,11 +44,11 @@ class User extends Authenticatable
     ];
 
     public function stand() {
-        return Stand::find($this->stand_id);
+        return $this->belongsTo(Stand::class, $this->stand_id+1);
     }
 
     public function userskin() {
-        return Userskin::find($this->userskin_id);
+        return $this->belongsTo(Userskin::class);
     }
 
     public function level($add = 0) {
