@@ -89,6 +89,24 @@ $(document).ready(function(e) {
     $(".unlock").on('click', '.selectable .unlock-remove', function(e) {
         removeUnlock(e);
     });
+
+    // Modals
+    $('.modals .modal').each(function(i,v) {
+        setTimeout(function() {
+            $(v).addClass('hidden');
+            setTimeout(function() {
+                $(v).remove();
+            },2000);
+        },$(v).attr('data-duration')*1000);
+    });
+    $('.modal .modal-remove').on('click', function(e) {
+        $(e.target).closest('.modal').remove();
+    });
+
+    // Password input
+    $('.password-toggle').on('click', function(e) {
+        togglePassword(e);
+    });
 });
 function toggleStandSelect(e) {
     if($($(e.target).closest('.form-select').children('.select-list')[0]).hasClass('toggled')) {
@@ -117,18 +135,18 @@ function toggleUnlockSelect(e) {
 }
 function addUnlock(e) {
     var unlockBlock = $(e.target).closest('.unlock');
-
-    $(e.target).addClass('hidden');
-    var id = $(e.target).attr('data-id');
-    var name = $($(e.target).children('.unlock-name')).text();
-    var image = $(e.target).attr('data-image');
+    console.log();
+    $($(e.target).closest('.selectable')).addClass('hidden');
+    var id = $($(e.target).closest('.selectable')).attr('data-id');
+    var name = $($($(e.target).closest('.selectable')).children('.unlock-name')).text();
+    var image = $($(e.target).closest('.selectable')).attr('data-image');
     var html = `
         <li data-id="`+id+`" class="selectable">
             <div class="unlock-image background-cover" style="background-image: url(`+image+`)"></div>
             <span class="unlock-name">`+name+`</span>
             <span class="unlock-remove"><i class="fa fas far fal fab fa-times"></i></span>
         </li>`;
-    $($(e.target).closest('.unlock').find('.unlock-list ul')[0]).append(html);
+    $($($(e.target).closest('.selectable')).closest('.unlock').find('.unlock-list ul')[0]).append(html);
     compileUnlocks(unlockBlock);
 }
 function removeUnlock(e) {
@@ -146,4 +164,19 @@ function compileUnlocks(unlockBlock) {
     });
     value = value.substring(0, value.length - 1);
     $(unlockBlock).find('.unlock-input').val(value);
+}
+
+function togglePassword(e) {
+    if($(e.target).closest('.password').find('.password-toggle i').hasClass('fa-eye-slash')) {
+        $($(e.target).closest('.password').find('input')[0]).attr('type', 'text');
+        $($(e.target).closest('.password').find('.password-toggle')[0]).addClass('toggled');
+        $($(e.target).closest('.password').find('i')[0]).addClass('fa-eye');
+        $($(e.target).closest('.password').find('i')[0]).removeClass('fa-eye-slash');
+    }
+    else {
+        $($(e.target).closest('.password').find('input')[0]).attr('type', 'password');
+        $($(e.target).closest('.password').find('.password-toggle')[0]).removeClass('toggled');
+        $($(e.target).closest('.password').find('i')[0]).addClass('fa-eye-slash');
+        $($(e.target).closest('.password').find('i')[0]).removeClass('fa-eye');
+    }
 }

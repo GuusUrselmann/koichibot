@@ -266,10 +266,12 @@ main {
 
 /*TABLE PLATFORM*/
 .table.platform {
+    margin-top: 25px;
     .table-options {
-        background-color: #efefef;
-        margin-bottom: 5px;
+        background-color: #2d2d2d;
         display: block;
+        height: 35px;
+        line-height: 35px;
         .table-search {
             width: 250px;
             height: 35px;
@@ -282,48 +284,61 @@ main {
                 margin-bottom: 3px;
                 padding-left: 10px;
                 border: none;
-                border-bottom: 1px solid #c3c3c3;
+                border-bottom: 1px solid #fff;
                 background-color: transparent;
                 font-size: 16px;
+                color: #fff;
             }
         }
         .table-amount {
             display: inline-block;
+            color: #fff;
+            select {
+                width: 35px;
+                height: 35px;
+                border: none;
+                background: none;
+                color: #fff;
+                font-size: 16px;
+                -moz-appearance:none;
+                -webkit-appearance:none;
+                appearance:none;
+                &:hover {
+                    cursor: pointer;
+                }
+            }
         }
         .table-add {
             margin-left: 25px;
             float: right;
-            padding: 2.5px 20px;
+            height: 35px;
+            padding: 0px 20px;
             .add-button {
                 width: 100px;
-                height: 30px;
+                height: 35px;
                 a {
                     width: 100%;
                     height: 100%;
-                    line-height: 30px;
+                    line-height: 35px;
                     display: block;
                     color: #fff;
                     .add-left {
-                        width: 30px;
+                        width: 35px;
                         height: 100%;
                         float: left;
                         background-color: #50b038;
                         text-align: center;
-                        border-top-left-radius: 3px;
-                        border-bottom-left-radius: 3px;
                     }
                     .add-right {
-                        width: 70px;
-                        height: 30px;
+                        width: 65px;
+                        height: 35px;
                         float: left;
                         padding-left: 5px;
                         font-weight: 600;
+                        line-height: 35px;
                         background-color: #fff;
-                        //border: 2px solid #ddd;
                         color: #50b038;
-                        border-top-right-radius: 3px;
-                        border-bottom-right-radius: 3px;
-                        border: 1px solid #50b038;
+                        border: 2px solid #50b038;
                         border-left: none;
                     }
                     &:hover {
@@ -344,12 +359,12 @@ main {
             width: 100%;
             table-layout: fixed;
             .table-header {
-                height: 25px;
-                line-height: 25px;
-                color: #fff;
-                background-color: #50b038;
+                height: 30px;
+                line-height: 30px;
                 th {
                     text-align: center;
+                    height: 30px;
+                    border-bottom: 2px solid #ea2790;
                 }
             }
             .table-row {
@@ -358,12 +373,12 @@ main {
             }
             .table-row {
                 &:hover {
-                    background-color: #ededed;
+                    background-color: #d2d2d2;
                 }
                 &:nth-child(odd) {
-                    background-color: #d5d5d5;
+                    background-color: #eee;
                     &:hover {
-                        background-color: #bebebe;
+                        background-color: #c1c1c1;
                     }
                 }
                 td {
@@ -371,6 +386,9 @@ main {
                     overflow: hidden;
                     white-space: nowrap;
                     text-overflow: ellipsis;
+                    a {
+                        color: #000;
+                    }
                     &.actions {
                         padding-left: 0px;
                         a {
@@ -381,15 +399,15 @@ main {
                             line-height: 25px;
                             float: left;
                             margin: 5px;
-                            border-radius: 3px;
+                            margin-right: 0px;
                             i {
                                 color: #fff;
                             }
                             &.edit {
-                                background-color: #50b038;
+                                background-color: #28a824;
                             }
                             &.delete {
-                                background-color: #df2525;
+                                background-color: #f92a2a;
                             }
                         }
                     }
@@ -406,7 +424,6 @@ main {
                                 height: 100%;
                             }
                         }
-
                     }
                 }
                 .table-centered {
@@ -424,12 +441,12 @@ main {
     .table-pagination {
         width: 100%;
         height: 35px;
-        background-color: #ddd;
+        background-color: #2d2d2d;
         .tablep-counter {
             height: 35px;
             line-height: 35px;
             padding-left: 15px;
-            color: #6f6f6f;
+            color: #fff;
             float: left;
             display: block;
         }
@@ -441,7 +458,7 @@ main {
             .tablep-button {
                 width: 30px;
                 height: 30px;
-                margin: 2.5px;
+                margin: 0px 2.5px;
                 line-height: 30px;
                 background-color: #b8b8b8;
                 text-align: center;
@@ -450,7 +467,7 @@ main {
                 font-weight: 600;
             }
             .tablep-button.current {
-                background-color: #50b038;
+                background-color: #28a824;
             }
         }
     }
@@ -534,6 +551,48 @@ main {
         }
         &.toggled {
             display: block!important;
+        }
+    }
+}
+
+/*Modals*/
+.modals{
+    position: absolute;
+    top: 35px;
+    right: 10px;
+    .modal {
+        min-width: 300px;
+        border-top-left-radius: 15px;
+        background-color: #ee2d2d;
+        color: #fff;
+        opacity: 1;
+        transition: opacity ease-in-out 2s;
+        .modal-title {
+            width: 100%;
+            height: 25px;
+            line-height: 25px;
+            padding-left: 20px;
+            font-size: 18px;
+            .modal-remove {
+                width: 20px;
+                float: right;
+                padding-right: 10px;
+            }
+        }
+        .modal-message {
+            min-height: 28px;
+            padding: 10px 10px;
+            margin-left: 5px;
+            line-height: 18px;
+            font-size: 14px;
+            background-color: #f04949;
+        }
+        .modal-footer {
+            height: 10px;
+            width: 100%;
+        }
+        &.hidden {
+            opacity: 0;
         }
     }
 }

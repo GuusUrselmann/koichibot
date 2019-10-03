@@ -78,3 +78,15 @@ if(!function_exists('menu_admin_sidebar')) {
         return $menu;
     }
 }
+
+$modals = [];
+if(!function_exists('add_modal')) {
+    function modal_add(string $type, string $title, string $message, int $duration) {
+        $modals[] = [
+            'type' => $type,
+            'title' => $title,
+            'message' => $message,
+            'duration' => $duration
+        ];
+    }
+}

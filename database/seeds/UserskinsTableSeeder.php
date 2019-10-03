@@ -21,13 +21,41 @@ class UserskinsTableSeeder extends Seeder
             'name' => 'Platigarde',
             'image' => 'userskins/Platigarde.png'
         ]);
-        // App\Userskin::create([
-        //     'name' => 'Dog',
-        //     'image' => 'userskins/Dog.png'
-        // ]);
-        // App\Userskin::create([
-        //     'name' => 'trigger admin',
-        //     'image' => 'userskins/triggeradmin.png'
-        // ]);
+        App\Userskin::create([
+            'name' => 'Classy Jotaro Kujo',
+            'image' => 'userskins/ClassyJotaroKujo.jpg'
+        ]);
+        App\Userskin::create([
+            'name' => 'Diavolo',
+            'image' => 'userskins/Diavolo.jpg'
+        ]);
+        App\Userskin::create([
+            'name' => 'Dio Brando',
+            'image' => 'userskins/DioBrando.png'
+        ]);
+        App\Userskin::create([
+            'name' => 'Giorno Giovanna',
+            'image' => 'userskins/GiornoGiovanna.png'
+        ]);
+        App\Userskin::create([
+            'name' => 'Guido Mista',
+            'image' => 'userskins/GuidoMista.png'
+        ]);
+        App\Userskin::create([
+            'name' => 'Jonathan Joestar',
+            'image' => 'userskins/JonathanJoestar.jpg'
+        ]);
+        App\Userskin::create([
+            'name' => 'Joseph Joestar',
+            'image' => 'userskins/JosephJoestar.png'
+        ]);
+        App\Userskin::create([
+            'name' => 'Jotaro Kujo',
+            'image' => 'userskins/JotaroKujo.jpg'
+        ]);
+        App\Userskin::create([
+            'name' => 'Noriaki Kakyoin',
+            'image' => 'userskins/NoriakiKakyoin.jpg'
+        ]);
     }
 }

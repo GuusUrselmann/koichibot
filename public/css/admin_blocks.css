@@ -156,6 +156,7 @@
 #userEdit.content-block .block-body .user-profile .user-info .list-items table tr td {
   padding: 2.5px 0px;
   padding-right: 15px;
+  height: 20px;
 }
 
 #userEdit.content-block .block-body .user-profile .user-info .list-items table tr td input {
@@ -163,6 +164,7 @@
   width: 80px;
   padding-left: 2px;
   font-size: 16px;
+  height: 20px;
   border-bottom: 1px solid #EA2790;
 }
 
@@ -184,6 +186,31 @@
 
 #userEdit.content-block .block-body .user-profile .user-info .list-items table tr td:nth-child(2) {
   padding-right: 0px;
+}
+
+#userEdit.content-block .block-body .user-profile .user-info .list-items table tr.password td input {
+  width: calc(100% - 20px);
+}
+
+#userEdit.content-block .block-body .user-profile .user-info .list-items table tr.password td .password-toggle {
+  width: 20px;
+  height: 20px;
+  background-color: #ea2790;
+  border: 1px solid #ea2790;
+  float: right;
+  color: #fff;
+  font-size: 14px;
+  line-height: 19px;
+  text-align: center;
+}
+
+#userEdit.content-block .block-body .user-profile .user-info .list-items table tr.password td .password-toggle:hover {
+  cursor: pointer;
+}
+
+#userEdit.content-block .block-body .user-profile .user-info .list-items table tr.password td .password-toggle.toggled {
+  background-color: #fff;
+  color: #ea2790;
 }
 
 #userEdit.content-block .block-body .user-stats {
@@ -483,6 +510,7 @@
   margin: 1px 5px;
   float: left;
   position: absolute;
+  border-radius: 50%;
 }
 
 #userUnlocks .block-body .unlocks .unlock .unlock-title .add-list ul li.selectable .unlock-name {

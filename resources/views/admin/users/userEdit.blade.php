@@ -43,6 +43,10 @@
                         </div>
                         <div class="list-items">
                             <table>
+                                <tr class="password">
+                                    <td>Password</td>
+                                    <td><input type="password" name="user_password" placeholder="new password"><div class="password-toggle"><i class="fas fa-eye"></i></div></td>
+                                </tr>
                                 <tr>
                                     <td>Discord ID</td>
                                     <td><input class="wideInput" type="text" name="user_discord_id" value="{{$user->discord_id}}"></td>
@@ -169,7 +173,10 @@
                         <div class="add-list">
                             <ul>
                                 @forelse($userskins as $userskin)
-                                    <li data-id="{{$userskin->id}}" data-image="{{asset('images/'.$userskin->image)}}" class="selectable {{$user->unlockedUserskin($userskin->id) ? 'hidden' : ''}}"><div class="unlock-image background-cover" style="background-image: url({{asset('images/'.$userskin->image)}})"></div><span class="unlock-name">{{$userskin->name}}</span></li>
+                                    <li data-id="{{$userskin->id}}" data-image="{{asset('images/'.$userskin->image)}}" class="selectable {{$user->unlockedUserskin($userskin->id) ? 'hidden' : ''}}">
+                                        <div class="unlock-image background-cover" style="background-image: url({{asset('images/'.$userskin->image)}})"></div>
+                                        <span class="unlock-name">{{$userskin->name}}</span>
+                                    </li>
                                 @empty
                                     <li class="empty">No user skins found</li>
                                 @endforelse
@@ -191,39 +198,39 @@
     </div>
 
     <script>
-        var ctx = $('#progressChart');
-        var progressChart = new Chart(ctx, {
-            type: 'doughnut',
-            data: {
-                datasets: [{
-                    data: [{{$user->experience}}, {{$user->level(1)->experience - $user->experience}}],
-                    backgroundColor: [
-                        'rgba(234, 39, 144, .8)',
-                        'rgba(45, 45, 45, .8)'
-                    ]
-                }]
-            },
-            options: {
-                animation: false,
-                legend: {display: false},
-                tooltips: {enabled: false},
-                hover: {mode: null},
-                elements: {
-                    center: {
-                        text: '1',
-                        color: '#36A2EB',
-                        fontStyle: 'Helvetica',
-                        sidePadding: 15
-                    },
-                    arc: {
-                        borderWidth: 0
-                    }
+    var ctx = $('#progressChart');
+    var progressChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            datasets: [{
+                data: [{{$user->experience}}, {{$user->level(1)->experience - $user->experience}}],
+                backgroundColor: [
+                    'rgba(234, 39, 144, .8)',
+                    'rgba(45, 45, 45, .8)'
+                ]
+            }]
+        },
+        options: {
+            animation: false,
+            legend: {display: false},
+            tooltips: {enabled: false},
+            hover: {mode: null},
+            elements: {
+                center: {
+                    text: '1',
+                    color: '#36A2EB',
+                    fontStyle: 'Helvetica',
+                    sidePadding: 15
                 },
-                cutoutPercentage: 80,
-                responsive: false,
-                maintainAspectRatio: true,
-                showScale: false
-            }
-        });
+                arc: {
+                    borderWidth: 0
+                }
+            },
+            cutoutPercentage: 80,
+            responsive: false,
+            maintainAspectRatio: true,
+            showScale: false
+        }
+    });
     </script>
 @endsection

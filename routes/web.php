@@ -24,7 +24,9 @@ Route::group(['prefix' => '/admin'], function() {
   });
   Route::group(['prefix' => '/users'], function() {
       Route::get('/', 'Admin\AdminUsersController@users');
+      Route::get('/add', 'Admin\AdminUsersController@userAdd');
       Route::get('/{id}/edit', 'Admin\AdminUsersController@userEdit');
+      Route::post('/add', 'Admin\AdminUsersController@userAddSave');
       Route::post('/{id}/edit', 'Admin\AdminUsersController@userEditSave');
       Route::post('/ajaxLevel','Admin\AdminUsersController@ajaxLevel');
   });

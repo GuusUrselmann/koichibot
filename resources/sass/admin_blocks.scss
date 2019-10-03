@@ -144,11 +144,13 @@
                             td {
                                 padding: 2.5px 0px;
                                 padding-right: 15px;
+                                height: 20px;
                                 input {
                                     border: none;
                                     width: 80px;
                                     padding-left: 2px;
                                     font-size: 16px;
+                                    height: 20px;
                                     border-bottom: 1px solid #EA2790;
                                     &.wideInput {
                                         width: 100%;
@@ -166,6 +168,31 @@
                                 }
                                 &:nth-child(2) {
                                     padding-right: 0px;
+                                }
+                            }
+                            &.password {
+                                td {
+                                    input {
+                                        width: calc(100% - 20px);
+                                    }
+                                    .password-toggle {
+                                        width: 20px;
+                                        height: 20px;
+                                        background-color: #ea2790;
+                                        border: 1px solid #ea2790;
+                                        float: right;
+                                        color: #fff;
+                                        font-size: 14px;
+                                        line-height: 19px;
+                                        text-align: center;
+                                        &:hover {
+                                            cursor: pointer;
+                                        }
+                                        &.toggled {
+                                            background-color: #fff;
+                                            color: #ea2790;
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -450,6 +477,7 @@
                                     margin: 1px 5px;
                                     float: left;
                                     position: absolute;
+                                    border-radius: 50%;
                                 }
                                 .unlock-name {
                                     padding-left: 33px;

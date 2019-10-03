@@ -6,7 +6,7 @@
             <div class="block-title">Levels</div>
         </div>
         <div class="block-body">
-            <div class="table platform levels" id="table-levels" data-ajax="false" data-ajaxPath="/admin/users/ajaxTableUsers">
+            <div class="table platform levels" id="table-levels">
                 <div class="table-options">
                     <div class="table-search">
                         <input type="text" placeholder="search...">
@@ -18,6 +18,7 @@
                             <option value="50">50</option>
                             <option value="100">100</option>
                         </select>
+                        results per page
                     </div>
                     <div class="table-add">
                         <div class="add-button">

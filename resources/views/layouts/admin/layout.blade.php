@@ -25,6 +25,22 @@
         @yield('stylesheets')
     </head>
     <body>
+        <div class="modals">
+            @if(isset(session('data')['modals']))
+                @foreach(session('data')['modals'] as $modal)
+                    <div class="modal" data-duration="{{$modal['duration']}}">
+                        <div class="modal-title">
+                            {{$modal['title']}}<span class="modal-remove"><i class="fa fas far fal fab fa-times"></i></span>
+                        </div>
+                        <div class="modal-message">
+                            {!!$modal['message']!!}
+                        </div>
+                        <div class="modal-footer">
+                        </div>
+                    </div>
+                @endforeach
+            @endif
+        </div>
         <div class="page-wrapper">
             <header>
                 @include('layouts.admin.header')
