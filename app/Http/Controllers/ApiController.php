@@ -14,9 +14,8 @@ class ApiController extends Controller
 
     //Job command
     public function stand(Request $request) {
-        return $response()->json([
-            'data' => 'neger'
-        ]);
+        return User::find(2);
+
         // $damage1 = rand($user->power_min, $user->power_max);
         // echo $user->power_min.'/'.$user->power_max.'<br/>';
         // echo $damage1.'<br/>';
