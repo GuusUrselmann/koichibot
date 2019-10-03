@@ -13,12 +13,8 @@ class ApiController extends Controller
     }
 
     //Job command
-    public function job() {
-        //test
-        //Make converter for stand stats
-        //get power stat
-        //random of 1
-        //random of 2
+    public function stand(Request $request) {
+        return $request->input('username');
         $user = User::find(2);
         return $user;
         // $damage1 = rand($user->power_min, $user->power_max);

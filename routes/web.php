@@ -14,8 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::post('/0KeWcjGuT9ntMTrCTdHR', 'ApiController@job');
+Route::group(['prefix' => 'api'], function() {
+    Route::post('/0KeWcjGuT9ntMTrCTdHR', 'ApiController@stand');
+});
 
 Route::group(['prefix' => '/admin'], function() {
   Route::get('/', 'Admin\AdminDashboardController@dashboard');
