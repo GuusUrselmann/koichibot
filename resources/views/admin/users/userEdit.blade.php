@@ -18,7 +18,7 @@
                         <div class="form-select" id="userSkin">
                             <input class="select-input" type=hidden name="user_userskin_id" value="{{$user->userskin_id}}">
                             <div class="select-current">
-                                {{$user->userskin()->name}}
+                                {{$user->userskin->name}}
                             </div>
                             <ul class="select-list">
                                 @foreach($userskins_unlocked as $userskin)
@@ -31,7 +31,7 @@
                         <canvas id="progressChart" width="220" height="220"></canvas>
                         <div class="userskin-shadow">
                         </div>
-                        <div id="skin" class="userskin-inner background-cover" style="background-image: url({{asset('images/'.$user->userskin()->image)}})">
+                        <div id="skin" class="userskin-inner background-cover" style="background-image: url({{asset('images/'.$user->userskin->image)}})">
                         </div>
                     </div>
                     <div class="profile-experience">
@@ -85,7 +85,7 @@
                                 <div class="form-select">
                                     <input class="select-input" type=hidden name="user_stand_id" value="{{$user->stand_id}}">
                                     <div class="select-current">
-                                        {{$user->stand_id ? $user->stand()->name : 'No stand'}}
+                                        {{$user->stand_id ? $user->stand->name : 'No stand'}}
                                     </div>
                                     <ul class="select-list">
                                         <li data-id="">No stand</li>

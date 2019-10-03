@@ -44,7 +44,6 @@
                             <th style="width: 100px;">user level</th>
                         </tr>
                         @forelse($users as $user)
-                            {{dd($user->stand->name)}}
                             <tr class="table-row">
                                 <td class="id table-centered">{{$user->id}}</td>
                                 <td class="actions"><a class="edit" href="{{url('/admin/users/'.$user->id.'/edit')}}"><i class="edit fas fa-pencil-alt"></i></a><a class="delete" href="{{url('/admin/users/'.$user->id.'/delete')}}"><i class="far fa-trash-alt"></i></a></td>
