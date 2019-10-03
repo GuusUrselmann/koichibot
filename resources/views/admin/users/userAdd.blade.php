@@ -1,8 +1,8 @@
 @extends('layouts.admin.layout')
 
 @section('content')
-    <div class="content-block" id="userEdit">
-        <form id="userEditForm" method="POST" action="" enctype="multipart/form-data" >
+    <div class="content-block userlayout" id="userAdd" class="userlayout">
+        <form id="userAddForm" method="POST" action="" enctype="multipart/form-data" >
             @csrf
             <div class="block-header">
                 <div class="block-title">
@@ -165,7 +165,7 @@
         <div class="block-body">
             <div class="unlocks">
                 <div class="unlock">
-                    <input class="unlock-input" form="userEditForm" type="hidden" name="user_unlocks_userskins" value="{{$userskinDefault->id}}">
+                    <input class="unlock-input" form="userAddForm" type="hidden" name="user_unlocks_userskins" value="{{$userskinDefault->id}}">
                     <div class="unlock-title">
                         User skins<span class="unlock-add"><i class="fa fas far fal fab fa-plus"></i></span>
                         <div class="add-list">

@@ -20,14 +20,15 @@ class ApiController extends Controller
         //random of 1
         //random of 2
         $user = User::find(2);
-        $damage1 = rand($user->power_min, $user->power_max);
-        echo $user->power_min.'/'.$user->power_max.'<br/>';
-        echo $damage1.'<br/>';
-        $power_alt = statToPercent($user->power);
-        echo $power_alt.'<br/>';
-        $d = ($user->power_max - $user->power_min) * ($power_alt);
-        $damage2 = rand(($user->power_min+$d), $user->power_max);
-        echo $damage2;
+        return $user;
+        // $damage1 = rand($user->power_min, $user->power_max);
+        // echo $user->power_min.'/'.$user->power_max.'<br/>';
+        // echo $damage1.'<br/>';
+        // $power_alt = statToPercent($user->power);
+        // echo $power_alt.'<br/>';
+        // $d = ($user->power_max - $user->power_min) * ($power_alt);
+        // $damage2 = rand(($user->power_min+$d), $user->power_max);
+        // echo $damage2;
     }
 
     public function quest() {
@@ -35,6 +36,6 @@ class ApiController extends Controller
     }
 
     public function search() {
-        
+
     }
 }

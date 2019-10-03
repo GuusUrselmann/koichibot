@@ -6,6 +6,9 @@
             <div class="block-title">Stands</div>
         </div>
         <div class="block-body">
+            <div class="stands-header">
+                Standard
+            </div>
             <div class="stands-list">
                 @forelse($stands as $stand)
                     <div class="stand-card">

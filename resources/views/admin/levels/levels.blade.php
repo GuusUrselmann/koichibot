@@ -44,7 +44,7 @@
                         @forelse($levels as $level)
                             <tr class="table-row">
                                 <td class="level table-centered">{{$level->level}}</td>
-                                <td class="actions"><a class="edit" href="{{url('/admin/levels/'.$level->level.'/edit')}}"><i class="edit fas fa-pencil-alt"></i></a><a class="delete" href="{{url('/admin/levels/'.$level->level.'/delete')}}"><i class="far fa-trash-alt"></i></a></td>
+                                <td class="actions"><a class="edit" href="{{url('/admin/levels/'.$level->id.'/edit')}}"><i class="edit fas fa-pencil-alt"></i></a><a class="delete" href="{{url('/admin/levels/'.$level->id.'/delete')}}"><i class="far fa-trash-alt"></i></a></td>
                                 <td class="experience">{{$level->experience}}</td>
                             </tr>
                         @empty

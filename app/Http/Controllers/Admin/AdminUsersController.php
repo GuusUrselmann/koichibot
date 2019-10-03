@@ -54,6 +54,15 @@ class AdminUsersController extends Controller
         return view('admin/users/userEdit', compact('user', 'stands', 'userskins', 'userskins_unlocked', 'errors'));
     }
 
+    function userDelete($id, Request $request) {
+        $user = User::find($id);
+        if(!$user) {
+            return redirect('/admin/users');
+        }
+        $user->delete();
+        return redirect('/admin/users');
+    }
+
     public function userAddSave(Request $request) {
         $power_min = $request->has('user_power_min') ? $request->input('user_power_min') : 0;
         $level_level = $request->has('user_level') ? $request->input('user_level') : 1;
@@ -88,12 +97,12 @@ class AdminUsersController extends Controller
                 }
             }
             $modals = [
-                    'errors' => [
-                        'type' => 'error',
-                        'title' => 'Error',
-                        'message' => $message,
-                        'duration' => 5
-                    ]
+                'errors' => [
+                    'type' => 'error',
+                    'title' => 'Error',
+                    'message' => $message,
+                    'duration' => 5
+                ]
             ];
             return redirect(url('/admin/users/add'))->with('data', ['errors' => $errors, 'modals' => $modals]);
         }
@@ -162,27 +171,27 @@ class AdminUsersController extends Controller
                 }
             }
             $modals = [
-                    'errors' => [
-                        'type' => 'error',
-                        'title' => 'Error',
-                        'message' => $message,
-                        'duration' => 5
-                    ]
+                'errors' => [
+                    'type' => 'error',
+                    'title' => 'Error',
+                    'message' => $message,
+                    'duration' => 5
+                ]
             ];
             return redirect(url('/admin/users/'.$user->id.'/edit'))->with('data', ['errors' => $errors, 'modals' => $modals]);
         }
         $level_id = Level::where('level', $request->has('user_level') ? $request->input('user_level') : $user->level()->level)->first()->id;
         $user->update([
-            'discord_id' => $request->has('user_discord_id') ? $request->input('user_discord_id') : $user->discord_id,
-            'username' => $request->has('user_username') ? $request->input('user_username') : $user->username,
+            'discord_id' => $request->input('user_discord_id'),
+            'username' => $request->input('user_username'),
             'password' => $request->has('user_password') ? Hash::make($request->input('user_password')) : $user->password,
             'userlevel'=> $request->has('user_userlevel') ? $request->input('user_userlevel') : $user->userlevel,
-            'money'=> $request->has('user_money') ? $request->input('user_money') : $user->money,
-            'userskin_id'=> $request->has('user_userskin_id') ? $request->input('user_userskin_id') : $user->userskin_id,
+            'money'=> $request->input('user_money'),
+            'userskin_id'=> $request->input('user_userskin_id'),
             'stand_id' => $request->has('user_stand_id') ? $request->input('user_stand_id') : $user->stand_id,
-            'health' => $request->has('user_health') ? $request->input('user_health') : $user->health,
-            'power_min' => $request->has('user_power_min') ? $request->input('user_power_min') : $user->power_min,
-            'power_max' => $request->has('user_power_max') ? $request->input('user_power_max') : $user->power_max,
+            'health' => $request->input('user_health'),
+            'power_min' => $request->input('user_power_min'),
+            'power_max' => $request->input('user_power_max'),
             'power' => $request->has('user_power') ? $request->input('user_power') : $user->power,
             'speed' => $request->has('user_speed') ? $request->input('user_speed') : $user->speed,
             'range' => $request->has('user_range') ? $request->input('user_range') : $user->range,
@@ -190,8 +199,8 @@ class AdminUsersController extends Controller
             'precision' => $request->has('user_precision') ? $request->input('user_precision') : $user->precision,
             'potential' => $request->has('user_potential') ? $request->input('user_potential') : $user->potential,
             'level_id' => $level_id,
-            'experience' => $request->has('user_experience') ? $request->input('user_experience') : $user->experience,
-            'unlocks_userskins' => $request->has('user_unlocks_userskins') ? $request->input('user_unlocks_userskins') : $user->unlocks_userskins
+            'experience' => $request->input('user_experience'),
+            'unlocks_userskins' => $request->input('user_unlocks_userskins')
         ]);
 
         return redirect(url('/admin/users'));

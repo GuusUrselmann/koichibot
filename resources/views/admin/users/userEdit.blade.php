@@ -1,7 +1,7 @@
 @extends('layouts.admin.layout')
 
 @section('content')
-    <div class="content-block" id="userEdit">
+    <div class="content-block userlayout" id="userEdit">
         <form id="userEditForm" method="POST" action="" enctype="multipart/form-data" >
             @csrf
             <div class="block-header">

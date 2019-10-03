@@ -19,6 +19,7 @@ class CreateStandsTable extends Migration
             $table->text('lore');
             $table->string('image');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

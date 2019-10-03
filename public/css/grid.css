@@ -40,6 +40,11 @@
     grid-column: 1/4;
     grid-row: 1;
   }
+
+  #levelEdit {
+    grid-column: 1/2;
+    grid-row: 1;
+  }
 }
 
 /*==============================*/
@@ -82,6 +87,11 @@
 
   #levels {
     grid-column: 1/4;
+    grid-row: 1;
+  }
+
+  #levelEdit {
+    grid-column: 1/2;
     grid-row: 1;
   }
 }
@@ -128,6 +138,11 @@
     grid-column: 1/4;
     grid-row: 1;
   }
+
+  #levelEdit {
+    grid-column: 1/2;
+    grid-row: 1;
+  }
 }
 
 /*==============================*/
@@ -172,6 +187,11 @@
     grid-column: 1/4;
     grid-row: 1;
   }
+
+  #levelEdit {
+    grid-column: 1/2;
+    grid-row: 1;
+  }
 }
 
 /*==============================*/
@@ -214,6 +234,11 @@
 
   #levels {
     grid-column: 1/4;
+    grid-row: 1;
+  }
+
+  #levelEdit {
+    grid-column: 1/2;
     grid-row: 1;
   }
 }

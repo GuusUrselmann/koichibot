@@ -505,15 +505,16 @@ main {
   height: 30px;
   margin: 0px 2.5px;
   line-height: 30px;
-  background-color: #b8b8b8;
+  background-color: #fff;
   text-align: center;
   display: inline-block;
-  color: #fff;
+  color: #28a824;
   font-weight: 600;
 }
 
 .table.platform .table-pagination .tablep-buttons .tablep-button.current {
   background-color: #28a824;
+  color: #fff;
 }
 
 /*CONTENT BLOCKS*/
