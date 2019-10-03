@@ -16,7 +16,6 @@ Route::get('/', function () {
 });
 Route::group(['prefix' => 'api'], function() {
     Route::post('/0KeWcjGuT9ntMTrCTdHR', 'ApiController@stand');
-    Route::get('/0KeWcjGuT9ntMTrCTdHR', 'ApiController@stand');
 });
 
 Route::group(['prefix' => '/admin'], function() {
