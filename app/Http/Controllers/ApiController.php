@@ -34,13 +34,13 @@ class ApiController extends Controller
         if($user != null) {
             return ['response' => 'userExist'];
         }
-        $password = Str::random(16);
+        // $password = Str::random(16);
         // $standIds = Stand::where('type', 'standard')->pluck('id');
         // $standIdKey = array_rand($standIds);
         User::create([
             'discord_id' => 653254,
             'username' => 'fewr#6543',
-            'password' => Hash::make($password),
+            'password' => Hash::make('password'),
             'userlevel'=> 'member',
             'money'=> 0,
             'userskin_id'=> 1,
