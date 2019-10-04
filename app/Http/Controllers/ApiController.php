@@ -32,7 +32,7 @@ class ApiController extends Controller
         $dataPost = $request->all();
         $user = User::where('username', $dataPost['username'])->first();
         if($user != null) {
-            return ['response' => 'userExist'];
+            return ['response' => 'userExists'];
         }
         $stand = Stand::find(1);
         $password = Str::random(16);
