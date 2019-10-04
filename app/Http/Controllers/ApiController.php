@@ -38,8 +38,8 @@ class ApiController extends Controller
         // $standIds = Stand::where('type', 'standard')->pluck('id')
         // $standIdKey = array_rand($standIds);
         User::create([
-            'discord_id' => $dataPost['discord_id'],
-            'username' => $dataPost['username'],
+            'discord_id' => 653254,
+            'username' => 'fewr#6543',
             'password' => Hash::make($password),
             'userlevel'=> 'member',
             'money'=> 0,
