@@ -34,15 +34,16 @@ class ApiController extends Controller
         if($user != null) {
             return ['response' => 'userExist'];
         }
+        $stand = Stand::find(1);
         $password = Str::random(16);
-        User::create([
+        $userNew = User::create([
             'discord_id' => $dataPost['discord_id'],
             'username' => $dataPost['username'],
             'password' => Hash::make($password),
             'userlevel'=> 'member',
             'money'=> 0,
             'userskin_id'=> 1,
-            'stand_id' => 1,
+            'stand_id' => $stand->id,
             'health' => 30,
             'power_min' => 10,
             'power_max' => 20,
@@ -56,9 +57,9 @@ class ApiController extends Controller
             'experience' => 0,
             'unlocks_userskins' => 1
         ]);
-        $userNew = User::with('stand')->where('username', $dataPost['username'])->first();
         $data = [
             'user' => $userNew,
+            'stand' => $stand,
             'password' => $password,
             'response' => 'success'
         ];
