@@ -32,7 +32,7 @@ class ApiController extends Controller
         if($user) {
             return ['response' => 'userExist'];
         }
-        // $password = Str::random(16);
+        $password = Str::random(16);
         //
         // User::create([
         //     'discord_id' => $dataPost['discord_id'],
