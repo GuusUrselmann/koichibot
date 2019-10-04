@@ -34,7 +34,7 @@ class ApiController extends Controller
         if($user != null) {
             return ['response' => 'userExists'];
         }
-        //$stand = Stand::find(1);
+        $stand = Stand::find(1);
         $password = Str::random(16);
         $userNew = User::create([
             'discord_id' => $dataPost['discord_id'],
@@ -43,7 +43,7 @@ class ApiController extends Controller
             'userlevel'=> 'member',
             'money'=> 0,
             'userskin_id'=> 1,
-            'stand_id' => 1,
+            'stand_id' => $stand->id,
             'health' => 30,
             'power_min' => 10,
             'power_max' => 20,
@@ -59,7 +59,7 @@ class ApiController extends Controller
         ]);
         $data = [
             'user' => $userNew,
-            'stand' => 1,
+            'stand' => $stand,
             'password' => $password,
             'response' => 'success'
         ];
