@@ -67,4 +67,17 @@ class ApiController extends Controller
         ];
         return $data;
     }
+
+    public function profile(Request $request) {
+        $dataPost = $request->all();
+        $user = User::with('stand', 'userskin')->where('username', $dataPost['username'])->first();
+        if($user != null) {
+            return ['response' => 'userExists'];
+        }
+        $data = [
+            'user' => $user,
+            'response' => 'success'
+        ];
+        return $data;
+    }
 }
