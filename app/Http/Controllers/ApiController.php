@@ -69,7 +69,7 @@ class ApiController extends Controller
     }
 
     public function profile(Request $request) {
-        $dataPost = $request->all()
+        $dataPost = $request->all();
         $user = User::with('stand', 'userskin')->where('username', $dataPost['username'])->first();
         if(!$user) {
             return ['response' => 'userEmpty'];
