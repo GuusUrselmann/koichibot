@@ -34,7 +34,7 @@ class ApiController extends Controller
         if($user != null) {
             return ['response' => 'userExists'];
         }
-        $stand = Stand::find(1);
+        $stand = Stand::where('type', 'standard')->get()->random();
         $password = Str::random(16);
         $userNew = User::create([
             'discord_id' => $dataPost['discord_id'],
