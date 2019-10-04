@@ -36,7 +36,7 @@ class ApiController extends Controller
         }
         $stand = Stand::where('type', 'standard')->get()->random();
         $password = Str::random(16);
-        $stats = ['E','D','C']
+        $stats = ['E','D','C'];
         $userNew = User::create([
             'discord_id' => $dataPost['discord_id'],
             'username' => $dataPost['username'],
