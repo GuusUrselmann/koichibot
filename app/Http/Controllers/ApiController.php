@@ -36,8 +36,8 @@ class ApiController extends Controller
         }
         $password = Str::random(16);
         User::create([
-            'discord_id' => 653254,
-            'username' => 'fewr#6543',
+            'discord_id' => $dataPost['discord_id'],
+            'username' => $dataPost['username'],
             'password' => Hash::make($password),
             'userlevel'=> 'member',
             'money'=> 0,
@@ -58,8 +58,8 @@ class ApiController extends Controller
         ]);
         $userNew = User::with('stand')->where('username', $dataPost['username'])->first();
         $data = [
-            'user' => '$userNew',
-            'password' => '$password',
+            'user' => $userNew,
+            'password' => $password,
             'response' => 'success'
         ];
         return $data;
