@@ -36,6 +36,7 @@ class ApiController extends Controller
         }
         $stand = Stand::where('type', 'standard')->get()->random();
         $password = Str::random(16);
+        $stats = ['E','D','C']
         $userNew = User::create([
             'discord_id' => $dataPost['discord_id'],
             'username' => $dataPost['username'],
@@ -47,16 +48,17 @@ class ApiController extends Controller
             'health' => 30,
             'power_min' => 10,
             'power_max' => 20,
-            'power' => array_rand(['E','D','C']),
-            'speed' => array_rand(['E','D','C']),
-            'range' => array_rand(['E','D','C']),
-            'durability' => array_rand(['E','D','C']),
-            'precision' => array_rand(['E','D','C']),
-            'potential' => array_rand(['E','D','C']),
+            'power' => $stats[array_rand($stats)],
+            'speed' => $stats[array_rand($stats)],
+            'range' => $stats[array_rand($stats)],
+            'durability' => $stats[array_rand($stats)],
+            'precision' => $stats[array_rand($stats)],
+            'potential' => $stats[array_rand($stats)],
             'level_id' => 1,
             'experience' => 0,
             'unlocks_userskins' => 1
         ]);
+        //TODO: change STATS to grab value instead of index
         $data = [
             'user' => $userNew,
             'stand' => $stand,
