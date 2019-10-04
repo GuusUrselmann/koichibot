@@ -29,7 +29,7 @@ class ApiController extends Controller
     public function setup(Request $request) {
         $dataPost = $request->all();
         $user = User::where('username', $dataPost['username'])->first();
-        if($user) {
+        if($user != null) {
             return ['response' => 'userExist'];
         }
         $password = Str::random(16);
@@ -46,17 +46,17 @@ class ApiController extends Controller
             'health' => 30,
             'power_min' => 10,
             'power_max' => 20,
-            // 'power' => array_rand(['E','D','C']),
-            // 'speed' => array_rand(['E','D','C']),
-            // 'range' => array_rand(['E','D','C']),
-            // 'durability' => array_rand(['E','D','C']),
-            // 'precision' => array_rand(['E','D','C']),
-            // 'potential' => array_rand(['E','D','C']),
+            'power' => array_rand(['E','D','C']),
+            'speed' => array_rand(['E','D','C']),
+            'range' => array_rand(['E','D','C']),
+            'durability' => array_rand(['E','D','C']),
+            'precision' => array_rand(['E','D','C']),
+            'potential' => array_rand(['E','D','C']),
             'level_id' => 1,
             'experience' => 0,
             'unlocks_userskins' => 1
         ]);
-        // $userNew = User::with('stand')->where('username', $dataPost['username'])->first();
+        $userNew = User::with('stand')->where('username', $dataPost['username'])->first();
         $data = [
             'user' => '$userNew',
             'password' => '$password',
