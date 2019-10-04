@@ -33,28 +33,28 @@ class ApiController extends Controller
             return ['response' => 'userExist'];
         }
         $password = Str::random(16);
-        //
-        // User::create([
-        //     'discord_id' => $dataPost['discord_id'],
-        //     'username' => $dataPost['username'],
-        //     'password' => Hash::make($password),
-        //     'userlevel'=> 'member',
-        //     'money'=> 0,
-        //     'userskin_id'=> 1,
-        //     'stand_id' => array_rand(Stand::where('type', 'standard')->get('id')),
-        //     'health' => 30,
-        //     'power_min' => 10,
-        //     'power_max' => 20,
-        //     'power' => array_rand(['E','D','C']),
-        //     'speed' => array_rand(['E','D','C']),
-        //     'range' => array_rand(['E','D','C']),
-        //     'durability' => array_rand(['E','D','C']),
-        //     'precision' => array_rand(['E','D','C']),
-        //     'potential' => array_rand(['E','D','C']),
-        //     'level_id' => 1,
-        //     'experience' => 0,
-        //     'unlocks_userskins' => 1
-        // ]);
+
+        User::create([
+            'discord_id' => $dataPost['discord_id'],
+            'username' => $dataPost['username'],
+            'password' => Hash::make($password),
+            'userlevel'=> 'member',
+            'money'=> 0,
+            'userskin_id'=> 1,
+            'stand_id' => array_rand(Stand::where('type', 'standard')->get('id')),
+            'health' => 30,
+            'power_min' => 10,
+            'power_max' => 20,
+            'power' => array_rand(['E','D','C']),
+            'speed' => array_rand(['E','D','C']),
+            'range' => array_rand(['E','D','C']),
+            'durability' => array_rand(['E','D','C']),
+            'precision' => array_rand(['E','D','C']),
+            'potential' => array_rand(['E','D','C']),
+            'level_id' => 1,
+            'experience' => 0,
+            'unlocks_userskins' => 1
+        ]);
         // $userNew = User::with('stand')->where('username', $dataPost['username'])->first();
         $data = [
             'user' => '$userNew',
