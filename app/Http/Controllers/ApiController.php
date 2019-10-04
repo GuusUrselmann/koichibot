@@ -33,8 +33,8 @@ class ApiController extends Controller
             return ['response' => 'userExist'];
         }
         $password = Str::random(16);
-        $standIds = Stand::where('type', 'standard')->pluck('id')
-        $standIdKey = array_rand($standIds);
+        // $standIds = Stand::where('type', 'standard')->pluck('id')
+        // $standIdKey = array_rand($standIds);
         User::create([
             'discord_id' => $dataPost['discord_id'],
             'username' => $dataPost['username'],
@@ -42,7 +42,7 @@ class ApiController extends Controller
             'userlevel'=> 'member',
             'money'=> 0,
             'userskin_id'=> 1,
-            'stand_id' => $standIds[$standIdKey],
+            'stand_id' => 1,
             'health' => 30,
             'power_min' => 10,
             'power_max' => 20,
