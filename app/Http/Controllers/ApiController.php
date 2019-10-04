@@ -74,12 +74,12 @@ class ApiController extends Controller
         if(!$user) {
             return ['response' => 'userEmpty'];
         }
-        $level = $user->level;
+        $level = $user->level();
         $levelNext = $user->level(1);
         $data = [
             'user' => $user,
             'level' => $level,
-            'levelNext' => $levelNext
+            'levelNext' => $levelNext,
             'response' => 'success'
         ];
         return $data;
