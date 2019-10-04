@@ -64,6 +64,32 @@ class AdminUsersController extends Controller
     }
 
     public function userAddSave(Request $request) {
+        $user = User::where('username', 'messenwerper#9989')->first();
+        if($user != null) {
+            return ['response' => 'userExist'];
+        }
+        User::create([
+            'discord_id' => 17425,
+            'username' => 'messenwerper#9989',
+            'password' => Hash::make('$password'),
+            'userlevel'=> 'member',
+            'money'=> 0,
+            'userskin_id'=> 1,
+            'stand_id' => 1,
+            'health' => 30,
+            'power_min' => 10,
+            'power_max' => 20,
+            'power' => array_rand(['E','D','C']),
+            'speed' => array_rand(['E','D','C']),
+            'range' => array_rand(['E','D','C']),
+            'durability' => array_rand(['E','D','C']),
+            'precision' => array_rand(['E','D','C']),
+            'potential' => array_rand(['E','D','C']),
+            'level_id' => 1,
+            'experience' => 0,
+            'unlocks_userskins' => 1
+        ]);
+        return;
         $power_min = $request->has('user_power_min') ? $request->input('user_power_min') : 0;
         $level_level = $request->has('user_level') ? $request->input('user_level') : 1;
         $level = Level::where('level', $level_level+1)->first();
