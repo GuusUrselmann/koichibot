@@ -37,7 +37,6 @@ class CreateUsersTable extends Migration
             $table->text('unlocks_userskins')->nullable();
             $table->rememberToken();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

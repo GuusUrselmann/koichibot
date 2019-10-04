@@ -18,7 +18,6 @@ class CreateLevelsTable extends Migration
             $table->integer('level');
             $table->integer('experience');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
