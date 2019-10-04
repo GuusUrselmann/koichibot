@@ -16,19 +16,14 @@ class ApiController extends Controller
     public function stand(Request $request) {
         $dataPost = $request->all();
         $user = User::with('stand')->where('username', $dataPost['username'])->first();
+        if(!$user) {
+            return ['response' => 'emptyUser'];
+        }
         $data = [
-            'user' => $user
+            'user' => $user,
+            'response' => 'success'
         ];
         return $data;
-
-        // $damage1 = rand($user->power_min, $user->power_max);
-        // echo $user->power_min.'/'.$user->power_max.'<br/>';
-        // echo $damage1.'<br/>';
-        // $power_alt = statToPercent($user->power);
-        // echo $power_alt.'<br/>';
-        // $d = ($user->power_max - $user->power_min) * ($power_alt);
-        // $damage2 = rand(($user->power_min+$d), $user->power_max);
-        // echo $damage2;
     }
 
     public function quest() {
