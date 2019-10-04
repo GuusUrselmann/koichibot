@@ -58,7 +58,7 @@ class ApiController extends Controller
             'experience' => 0,
             'unlocks_userskins' => 1
         ]);
-        $userNew = User::with('stand')->where('username', $dataPost['username'])->first();
+        // $userNew = User::with('stand')->where('username', $dataPost['username'])->first();
         $data = [
             'user' => '$userNew',
             'password' => '$password',
