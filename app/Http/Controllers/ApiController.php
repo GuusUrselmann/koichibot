@@ -35,8 +35,6 @@ class ApiController extends Controller
             return ['response' => 'userExist'];
         }
         $password = Str::random(16);
-        // $standIds = Stand::where('type', 'standard')->pluck('id');
-        // $standIdKey = array_rand($standIds);
         User::create([
             'discord_id' => 653254,
             'username' => 'fewr#6543',
@@ -58,7 +56,7 @@ class ApiController extends Controller
             'experience' => 0,
             'unlocks_userskins' => 1
         ]);
-        // $userNew = User::with('stand')->where('username', $dataPost['username'])->first();
+        $userNew = User::with('stand')->where('username', $dataPost['username'])->first();
         $data = [
             'user' => '$userNew',
             'password' => '$password',
