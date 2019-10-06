@@ -66,6 +66,23 @@ if(!function_exists('menu_admin_sidebar')) {
                         'permissions' => []
                     ]
                 ]
+            ],
+            'quests' => [
+                'name' => 'quests',
+                'display_name' => 'quests',
+                'slug' => 'menuitem_quests',
+                'site_url' => 'admin/quests',
+                'icon' => 'user',
+                'permissions' => [],
+                'submenu' => [
+                    'quests-all' => [
+                        'name' => 'quests-all',
+                        'display_name' => 'all quests',
+                        'slug' => 'menuitem_quests-all',
+                        'site_url' => 'admin/quests',
+                        'permissions' => []
+                    ]
+                ]
             ]
         ];
 

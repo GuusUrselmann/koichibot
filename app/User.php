@@ -60,4 +60,26 @@ class User extends Authenticatable
         }
         return false;
     }
+
+    public function getLevelBoost() {
+        $level_weights = [
+            '0' => 0,
+            '10' => 5,
+            '20' => 10,
+            '30' => 20,
+            '50' => 35,
+            '100' => 50,
+            '200' => 60
+        ];
+        $boost = 00;
+        foreach($level_weights as $weight_level => $weight) {
+            if($this->level()->level > (int)$weight_level) {
+                $boost = $weight;
+            }
+            else {
+                break;
+            }
+        }
+        return $boost;
+    }
 }

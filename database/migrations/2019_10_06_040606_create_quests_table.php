@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserskinsTable extends Migration
+class CreateQuestsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,16 @@ class CreateUserskinsTable extends Migration
      */
     public function up()
     {
-        Schema::create('userskins', function (Blueprint $table) {
+        Schema::create('quests', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('image');
-            $table->enum('type', ['standard', 'custom']);
+            $table->text('description');
+            $table->text('description_win');
+            $table->text('description_lose');
+            $table->integer('money_spread');
+            $table->integer('experience_spread');
             $table->enum('rarity', ['common', 'uncommon', 'rare', 'epic', 'legendary', 'ascended']);
+            $table->enum('rarity_loot', ['common', 'uncommon', 'rare', 'epic', 'legendary', 'ascended']);
             $table->timestamps();
         });
     }
@@ -30,6 +34,6 @@ class CreateUserskinsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('userskins');
+        Schema::dropIfExists('quests');
     }
 }

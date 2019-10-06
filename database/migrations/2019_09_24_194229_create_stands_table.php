@@ -19,6 +19,7 @@ class CreateStandsTable extends Migration
             $table->text('lore');
             $table->string('image');
             $table->enum('type', ['standard', 'custom']);
+            $table->enum('rarity', ['common', 'uncommon', 'rare', 'epic', 'legendary', 'ascended']);
             $table->timestamps();
         });
     }

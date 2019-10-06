@@ -18,6 +18,7 @@ Route::group(['prefix' => 'api'], function() {
     Route::post('/0KeWcjGuT9ntMTrCTdHR', 'ApiController@stand');
     Route::post('/bR950ZQhGcirjEVdj7Iu', 'ApiController@setup');
     Route::post('/EimjBQiBqLEZFtK9AMcl', 'ApiController@profile');
+    Route::post('/R7uI40zuxewJp5r6zd08', 'ApiController@quest');
 });
 
 Route::group(['prefix' => '/admin'], function() {
@@ -44,6 +45,10 @@ Route::group(['prefix' => '/admin'], function() {
       Route::get('/{id}/delete', 'Admin\AdminLevelsController@levelDelete');
       Route::post('/add', 'Admin\AdminLevelsController@levelAddSave');
       Route::post('/{id}/edit', 'Admin\AdminLevelsController@levelEditSave');
+  });
+
+  Route::group(['prefix' => '/quests'], function() {
+      Route::get('/', 'Admin\AdminQuestsController@quests');
   });
 });
 

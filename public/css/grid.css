@@ -45,6 +45,13 @@
     grid-column: 1/2;
     grid-row: 1;
   }
+
+  /*Admin Quests page*/
+
+  #quests {
+    grid-column: 1/4;
+    grid-row: 1;
+  }
 }
 
 /*==============================*/
@@ -92,6 +99,13 @@
 
   #levelEdit {
     grid-column: 1/2;
+    grid-row: 1;
+  }
+
+  /*Admin Quests page*/
+
+  #quests {
+    grid-column: 1/4;
     grid-row: 1;
   }
 }
@@ -143,6 +157,13 @@
     grid-column: 1/2;
     grid-row: 1;
   }
+
+  /*Admin Quests page*/
+
+  #quests {
+    grid-column: 1/4;
+    grid-row: 1;
+  }
 }
 
 /*==============================*/
@@ -192,6 +213,13 @@
     grid-column: 1/2;
     grid-row: 1;
   }
+
+  /*Admin Quests page*/
+
+  #quests {
+    grid-column: 1/4;
+    grid-row: 1;
+  }
 }
 
 /*==============================*/
@@ -239,6 +267,13 @@
 
   #levelEdit {
     grid-column: 1/2;
+    grid-row: 1;
+  }
+
+  /*Admin Quests page*/
+
+  #quests {
+    grid-column: 1/4;
     grid-row: 1;
   }
 }
