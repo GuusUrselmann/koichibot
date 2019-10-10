@@ -18,7 +18,7 @@ Route::group(['prefix' => 'api'], function() {
     Route::post('/0KeWcjGuT9ntMTrCTdHR', 'ApiController@stand');
     Route::post('/bR950ZQhGcirjEVdj7Iu', 'ApiController@setup');
     Route::post('/EimjBQiBqLEZFtK9AMcl', 'ApiController@profile');
-    Route::get('/R7uI40zuxewJp5r6zd08', 'ApiController@quest');
+    Route::post('/R7uI40zuxewJp5r6zd08', 'ApiController@quest');
 });
 
 Route::group(['prefix' => '/admin'], function() {

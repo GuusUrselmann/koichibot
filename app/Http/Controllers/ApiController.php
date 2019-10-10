@@ -89,8 +89,8 @@ class ApiController extends Controller
 
     public function quest(Request $request) {
         $dataPost = $request->all();
-        //$user = User::with('stand')->where('username', $dataPost['username'])->first();
-        $user = User::with('stand')->where('username', 'messenwerper#9969')->first();
+        $user = User::with('stand')->where('username', $dataPost['username'])->first();
+        //$user = User::with('stand')->where('username', 'messenwerper#9969')->first();
         if(!$user) {
             return ['response' => 'userEmpty'];
         }
