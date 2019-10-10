@@ -102,7 +102,7 @@ class ApiController extends Controller
         //Generate enemy as fighter (to alter stats if need be)
         $enemy = $user->generateEnemy($quest->difficulty);
         $fight = new Fight($player, $enemy);
-        $fight->start();
+        //$fight->start();
         $data = [
             'user' => $user,
             'quest' => $quest,
