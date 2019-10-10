@@ -98,9 +98,11 @@ class ApiController extends Controller
         //Get quest
         $quest = Quest::fromRarity($rarity_boost)->inRandomOrder()->first();
         //Get player as fighter (to alter stats if need be)
-        $player = new Fighter('player', $user->stand_id, $user->health, $user->power_min, $user->power_max, $user->power, $user->speed, $user->range, $user->durability, $user->precision, $user->potential, $user->abilities, $user->level()->level);
+        $fighter1 = new Fighter('player', $user->stand_id, $user->health, $user->power_min, $user->power_max, $user->power, $user->speed, $user->range, $user->durability, $user->precision, $user->potential, $user->abilities, $user->level()->level);
+        $player = $fighter1;
         //Generate enemy as fighter (to alter stats if need be)
-        $enemy = $user->generateEnemy($quest->difficulty);
+        $fighter2 = $user->generateEnemy($quest->difficulty);
+        $enemy = $fighter2;
         $fight = new Fight($player, $enemy);
         $fight->start();
         $data = [
