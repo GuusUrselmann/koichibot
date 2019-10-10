@@ -103,7 +103,6 @@ class ApiController extends Controller
         $enemy = $user->generateEnemy($quest->difficulty);
         $fight = new Fight($player, $enemy);
         $fight->start();
-        dd($fight);
         $data = [
             'user' => $user,
             'quest' => $quest,
@@ -112,7 +111,7 @@ class ApiController extends Controller
             'fight' => $fight,
             'response' => 'success'
         ];
-        //return $data;
+        return $data;
 
 
         // Level
