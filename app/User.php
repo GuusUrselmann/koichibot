@@ -105,7 +105,7 @@ class User extends Authenticatable
         $durability = $statvalues[rand(0,4)];
         $precision = $statvalues[rand(0,4)];
         $potential = $statvalues[rand(0,4)];
-        $abilities = [];
+        $abilities = '';
         $level = $this->level()->level;
 
         $enemy = new Fighter('enemy', $stand_id, $health, $power_min, $power_max, $power, $speed, $range, $durability, $precision, $potential, $abilities, $level);

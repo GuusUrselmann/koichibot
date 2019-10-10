@@ -30,6 +30,7 @@ class UsersTableSeeder extends Seeder
             'durability' => 'A',
             'precision' => 'A',
             'potential' => 'A',
+            'abilities' => '1,3,4',
             'level_id' => 1,
             'experience' => 0,
             'unlocks_userskins' => '2'
@@ -51,6 +52,7 @@ class UsersTableSeeder extends Seeder
             'durability' => 'A',
             'precision' => 'A',
             'potential' => 'A',
+            'abilities' => '1,3,4',
             'level_id' => 1,
             'experience' => 16,
             'unlocks_userskins' => '1,2'
