@@ -15,7 +15,6 @@ class Fight {
 
     public function __construct($player, $enemy) {
         $this->fighters = [$player, $enemy];
-        $this->fighters[0]->health = 20;
     }
 
     public function start() {
