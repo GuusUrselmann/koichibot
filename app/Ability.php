@@ -42,8 +42,6 @@ class Ability extends Model
 
     // steel shield ability
     public static function steel_shield($fight) {
-        $fight->fighter_current->health = 20;
-        $fight->fighter_current->health_max = 20;
-        return $fight;
+        
     }
 }
