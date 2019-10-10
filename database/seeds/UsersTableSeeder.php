@@ -37,7 +37,7 @@ class UsersTableSeeder extends Seeder
         ]);
         App\User::create([
             'discord_id' => '278550031848570881',
-            'username' => 'Platigarde#2294',
+            'username' => 'Platigarde#0001',
             'password' => Hash::make('password'),
             'userlevel' => 'owner',
             'money' => 0,
