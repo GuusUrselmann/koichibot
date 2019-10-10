@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Quest extends Model
 {
     public function scopeFromRarity($query, $weight_boost = 0) {
-        $weights_base = [
+        $weights = [
             'common' => 800,
             'uncommon' => 500,
             'rare' => 200,
@@ -19,7 +19,7 @@ class Quest extends Model
         $rarity = '';
         $loop = true;
         while($loop) {
-            $result = getRarity($weights_base, $weight_boost);
+            $result = getRarity($weights);
             $quest = Quest::where('rarity', $result)->first();
             if(!$quest) {
                 return;

@@ -20,6 +20,7 @@ class QuestsTableSeeder extends Seeder
             'description_lose' => 'you failed miserable in stopping the thieves and as soon as you woke up after the fight, they were already gone.',
             'money_spread' => 200,
             'experience_spread' => 15,
+            'difficulty' => 'hard',
             'rarity' => 'uncommon',
             'rarity_loot' => 'common'
         ]);
@@ -30,6 +31,7 @@ class QuestsTableSeeder extends Seeder
             'description_lose' => 'The mugger defeated you and stole some of your money before he ran away deeper into the maze of alleyways, accepting your defeat, you decided to quickly make it out of there',
             'money_spread' => 700,
             'experience_spread' => 15,
+            'difficulty' => 'moderate',
             'rarity' => 'rare',
             'rarity_loot' => 'uncommon'
         ]);

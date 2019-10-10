@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use App\Classes\Fighter;
+use App\Classes\Fight;
 use App\User;
 use App\Stand;
 use App\Quest;
@@ -88,12 +90,19 @@ class ApiController extends Controller
     public function quest(Request $request) {
         $dataPost = $request->all();
         //$user = User::with('stand')->where('username', $dataPost['username'])->first();
-        $user = User::with('stand')->where('username', 'messenwerper#9969')->first();
+        $user = User::with('stand')->where('username', $dataPost['username'])->first();
         if(!$user) {
             return ['response' => 'userEmpty'];
         }
         $rarity_boost = $user->getLevelBoost();
+        //Get quest
         $quest = Quest::fromRarity($rarity_boost)->inRandomOrder()->first();
+        //Get player as fighter (to alter stats if need be)
+        $player = new Fighter('player', $user->stand_id, $user->health, $user->power_min, $user->power_max, $user->power, $user->speed, $user->range, $user->durability, $user->precision, $user->potential, $user->abilities, $user->level()->level);
+        //Generate enemy as fighter (to alter stats if need be)
+        $enemy = $user->generateEnemy($quest->difficulty);
+        $fight = new Fight($player, $enemy);
+        //$fight->start();
         $data = [
             'user' => $user,
             'quest' => $quest,

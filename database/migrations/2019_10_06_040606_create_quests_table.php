@@ -21,6 +21,7 @@ class CreateQuestsTable extends Migration
             $table->text('description_lose');
             $table->integer('money_spread');
             $table->integer('experience_spread');
+            $table->enum('difficulty', ['easy', 'moderate', 'hard', 'expert']);
             $table->enum('rarity', ['common', 'uncommon', 'rare', 'epic', 'legendary', 'ascended']);
             $table->enum('rarity_loot', ['common', 'uncommon', 'rare', 'epic', 'legendary', 'ascended']);
             $table->timestamps();

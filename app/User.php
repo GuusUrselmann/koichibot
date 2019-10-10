@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Classes\Fighter;
 use App\Stand;
 use App\Userskin;
 use App\Level;
@@ -81,5 +82,33 @@ class User extends Authenticatable
             }
         }
         return $boost;
+    }
+
+    public function generateEnemy($difficulty) {
+        $difficulties = [
+            'easy' => 10,
+            'moderate' => 30,
+            'hard' => 60,
+            'expert' => 80
+        ];
+        $statvalues = ['E','D','C','B','A'];
+        $health_min = ceil($this->health / 10 * 7);
+        $health_max = ceil($this->health / 10 * 15);
+
+        $stand_id = Stand::where('type', 'standard')->get()->random()->id;
+        $health = rand($health_min, $health_max);
+        $power_min = rand($this->power_min / 10 * 7, $this->power_min / 10 * rand(7,14));
+        $power_max = rand($power_min / 10 * 12, $this->power_max / 10 * rand(12,18));
+        $power = $statvalues[rand(0,4)];
+        $speed = $statvalues[rand(0,4)];
+        $range = $statvalues[rand(0,4)];
+        $durability = $statvalues[rand(0,4)];
+        $precision = $statvalues[rand(0,4)];
+        $potential = $statvalues[rand(0,4)];
+        $abilities = [];
+        $level = $this->level()->level;
+
+        $enemy = new Fighter('enemy', $stand_id, $health, $power_min, $power_max, $power, $speed, $range, $durability, $precision, $potential, $abilities, $level);
+        return $enemy;
     }
 }
