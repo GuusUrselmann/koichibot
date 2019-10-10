@@ -106,6 +106,7 @@ class ApiController extends Controller
         $data = [
             'user' => $user,
             'quest' => $quest,
+            'enemy' => $enemy,
             'response' => 'success'
         ];
         return $data;
