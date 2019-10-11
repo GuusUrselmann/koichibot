@@ -27,11 +27,11 @@ class Ability extends Model
         // if(!$fight->fighter_current->health < ceil($fight->fighter_current->health_max / 10 * 5)) {
         //     return false;
         // }
-        $chance = 30;
-        $rng = rand(0, 100);
-        if($rng > $chance) {
-            return false;
-        }
+        // $chance = 30;
+        // $rng = rand(0, 100);
+        // if($rng > $chance) {
+        //     return false;
+        // }
         $amount = $fight->fighter_current->health_max / 10 * 2;
         // Heal fighter
         $fight->fighter_current->health += $amount + $fight->fighter_current->health <= $fight->fighter_current->health ? $fight->current_fighter->health_max + $heal : $fight->fighter_current->health = $fight->fighter_current->health_max;
