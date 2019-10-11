@@ -18,7 +18,7 @@ class Ability extends Model
             return;
         }
         $fight->log("**[**'.$fight->fighter_current->type.' '.$fight->fighter_current->health.'**/**'.$fight->fighter_current->health_max.'**]** used ability **TIMESTOP**");
-        $target = $this->getNextFighter();
+        $target = $fight->getNextFighter();
         $fight->attack($target);
         $fight->attack($target);
         $fight->attack($target);
