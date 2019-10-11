@@ -36,7 +36,7 @@ class Ability extends Model
         // Heal fighter
         $fight->fighter_current->health += $amount + $fight->fighter_current->health <= $fight->fighter_current->health ? $fight->current_fighter->health_max + $heal : $fight->fighter_current->health = $fight->fighter_current->health_max;
         $fight->log('**[**'.$fight->fighter_current->type.' '.$fight->fighter_current->health.'**/**'.$fight->fighter_current->health_max.'**]** used ability **Balance**');
-        $fight->log('**[**'.$fight->fighter_current->type.' '.$fight->fighter_current->health.'**/**'.$fight->fighter_current->health_max.'**]** healed for **.'$amount'.**');
+        $fight->log('**[**'.$fight->fighter_current->type.' '.$fight->fighter_current->health.'**/**'.$fight->fighter_current->health_max.'**]** healed for **'.$amount.'**');
         return true;
     }
 
