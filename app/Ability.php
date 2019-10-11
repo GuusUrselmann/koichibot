@@ -12,16 +12,7 @@ class Ability extends Model
 
     // timestop ability
     public static function timestop($fight) {
-        $chance = 30;
-        $rng = rand(0,100);
-        if($chance >= $rng) {
-            return;
-        }
-        $fight->log("**[**'.$fight->fighter_current->type.' '.$fight->fighter_current->health.'**/**'.$fight->fighter_current->health_max.'**]** used ability **TIMESTOP**");
-        $target = $fight->getNextFighter();
-        $fight->attack($target);
-        $fight->attack($target);
-        $fight->attack($target);
+        
     }
 
     // megabeam ability
