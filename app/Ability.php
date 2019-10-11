@@ -12,7 +12,16 @@ class Ability extends Model
 
     // timestop ability
     public static function timestop($fight) {
-
+        $chance = 30;
+        $rng = rand(0,100);
+        if($chance >= $rng) {
+            return;
+        }
+        $fight->log("**[**'.$fight->fighter_current->type.' '.$fight->fighter_current->health.'**/**'.$fight->fighter_current->health_max.'**]** used ability **TIMESTOP**");
+        $target = $this->getNextFighter();
+        $fight->attack($target);
+        $fight->attack($target);
+        $fight->attack($target);
     }
 
     // megabeam ability
@@ -21,23 +30,8 @@ class Ability extends Model
     }
 
     // balance ability
-    // When health is lower than 50%, have a 30% chance to heal 20% of your total health
     public static function balance($fight) {
-        //conditions
-        // if(!$fight->fighter_current->health < ceil($fight->fighter_current->health_max / 10 * 5)) {
-        //     return false;
-        // }
-        // $chance = 30;
-        // $rng = rand(0, 100);
-        // if($rng > $chance) {
-        //     return false;
-        // }
-        $amount = $fight->fighter_current->health_max / 10 * 2;
-        // Heal fighter
-        $fight->fighter_current->health += $amount + $fight->fighter_current->health <= $fight->fighter_current->health ? $fight->current_fighter->health_max + $heal : $fight->fighter_current->health = $fight->fighter_current->health_max;
-        $fight->log('**[**'.$fight->fighter_current->type.' '.$fight->fighter_current->health.'**/**'.$fight->fighter_current->health_max.'**]** used ability **Balance**');
-        $fight->log('**[**'.$fight->fighter_current->type.' '.$fight->fighter_current->health.'**/**'.$fight->fighter_current->health_max.'**]** healed for **'.$amount.'**');
-        return true;
+
     }
 
     // steel shield ability

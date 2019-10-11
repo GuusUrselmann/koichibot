@@ -104,10 +104,9 @@ class Fight {
 
     public function attack($target) {
         $damage = rand($this->fighter_current->power_min, $this->fighter_current->power_max);
-        $target = $this->getNextFighter();
         $target->health -= $damage;
         $this->log('**[**'.$this->fighter_current->type.' '.$this->fighter_current->health.'**/**'.$this->fighter_current->health_max.'**]** attacked **'.$target->type.'** for **'.$damage.'** damage **[**'.$target->type.' '.$target->health.'**/**'.$target->health_max.'**]**');
-        
+
     }
 
     public function log($string) {
