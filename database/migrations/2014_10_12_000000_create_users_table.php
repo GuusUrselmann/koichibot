@@ -35,6 +35,7 @@ class CreateUsersTable extends Migration
             $table->integer('level_id')->unsigned()->nullable();
             $table->integer('experience')->nullable();
             $table->text('unlocks_userskins')->nullable();
+            $table->text('inventory_artifacts')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

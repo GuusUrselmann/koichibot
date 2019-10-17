@@ -20,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'discord_id', 'username', 'password', 'userlevel', 'money', 'userskin_id', 'stand_id', 'health', 'power_min', 'power_max', 'power', 'speed', 'range', 'durability', 'precision', 'potential', 'level_id', 'experience', 'unlocks_userskins'
+        'discord_id', 'username', 'password', 'userlevel', 'money', 'userskin_id', 'stand_id', 'health', 'power_min', 'power_max', 'power', 'speed', 'range', 'durability', 'precision', 'potential', 'level_id', 'experience', 'unlocks_userskins', 'inventory_artifacts'
     ];
 
     /**
@@ -51,6 +51,9 @@ class User extends Authenticatable
 
     public function level($add = 0) {
         $level = Level::where('level', $this->level_id)->first();
+        if(!Level::where('level', $level->level+$add)->first()) {
+            return $level;
+        }
         return Level::where('level', $level->level + $add)->first();
     }
 
@@ -110,5 +113,80 @@ class User extends Authenticatable
 
         $enemy = new Fighter('enemy', $stand_id, $health, $power_min, $power_max, $power, $speed, $range, $durability, $precision, $potential, $abilities, $level);
         return $enemy;
+    }
+
+    public function reward($rewards) {
+        if(!empty($rewards['money'])) {
+            $this->money_add($rewards['money']['amount']);
+        }
+        if(!empty($rewards['experience'])) {
+            $this->experience_add($rewards['experience']['amount']);
+        }
+        if(!empty($rewards['artifact'])) {
+            $this->artifact_add($rewards['artifact']['item']);
+        }
+    }
+
+    public function money_add($amount) {
+        $this->update([
+            'money' => $this->money+$amount
+        ]);
+    }
+
+    public function experience_add($amount) {
+        //TODO: Make sure it works for massive exp boosts (with a loop)
+        //TODO: Make a level up response checker
+        if(!$this->level(1)) {
+            return;
+        }
+        if(($amount+$this->experience) > $this->level(1)->experience) {
+            $this->update([
+                'level_id' => $this->level(1)->level,
+                'experience' => $amount+$this->experience-$this->level(1)->experience
+            ]);
+        }
+        else {
+            $this->update([
+                'experience' => $amount+$this->experience
+            ]);
+        }
+    }
+
+    public function artifact_add($artifact) {
+        //TODO: make an achievement checker and run it here
+        $inventory = [];
+        $inventory_artifacts = explode(',', $this->inventory_artifacts);
+        foreach($inventory_artifacts as $inventory_artifact) {
+            $inventory[] = explode(':', $inventory_artifact);
+        }
+        foreach($inventory as $i => $item) {
+            if($item[0] == $artifact->id) {
+                //already exists, add 1 to inv
+                $inventory[$i][1] += 1;
+                $inv_string = '';
+                foreach($inventory as $inventory_item) {
+                    $inv_string .= $inventory_item[0].':'.$inventory_item[1].',';
+                }
+                $inv_string = substr($inv_string, 0, -1);
+                $this->update([
+                    'inventory_artifacts' => $inv_string
+                ]);
+                //check for achievements
+                // $this->achievements_check();
+                return;
+            }
+        }
+        //Add new to inventory
+        $inventory[] = [$artifact->id,1];
+        $inv_string = '';
+        foreach($inventory as $inventory_item) {
+            $inv_string .= $inventory_item[0].':'.$inventory_item[1].',';
+        }
+        $inv_string = substr($inv_string, 0, -1);
+        $this->update([
+            'inventory_artifacts' => $inv_string
+        ]);
+        //check for achievements
+        // $this->achievements_check();
     }
 }

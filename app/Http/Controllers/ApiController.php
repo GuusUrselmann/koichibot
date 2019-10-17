@@ -11,6 +11,7 @@ use App\Classes\Fight;
 use App\User;
 use App\Stand;
 use App\Quest;
+use App\Artifact;
 
 class ApiController extends Controller
 {
@@ -103,12 +104,32 @@ class ApiController extends Controller
         $enemy = $user->generateEnemy($quest->difficulty);
         $fight = new Fight($player, $enemy);
         $fight->start();
+        $rewards = [];
+        if($fight->winner_fighter->type == 'player') {
+            //generate money
+            $rewards['money']['amount'] = ceil(rand($quest->money_spread*.8, $quest->money_spread*1.2)+$user->level()->level);
+            $rewards['money']['description'] = '**+**'.$rewards['money']['amount'].' money **+** '.$user->level()->level.' level bonus';
+            $rewards['experience']['amount'] = ceil(rand($quest->experience_spread*.8, $quest->experience_spread*1.2));
+            $rewards['experience']['description'] = '**+**'.$rewards['experience']['amount'].' Exp.';
+
+            $artifact_chance = getRarity(weights_artifactchance($quest->rarity));
+            if($artifact_chance == 'success') {
+                $artifact_weights = weights_artifact($quest->rarity);
+                $artifact_rarity = getRarity($artifact_weights);
+                $artifact = Artifact::where('rarity', $artifact_rarity)->inRandomOrder()->first();
+                $rewards['artifact']['item'] = $artifact;
+                $rewards['artifact']['description'] = 'You found **'.$artifact->name.'**! that\'s pretty **'.$artifact->rarity.'**.';
+
+            }
+            $user->reward($rewards);
+        }
         $data = [
             'user' => $user,
             'quest' => $quest,
             'player' => $player,
             'enemy' => $enemy,
             'fight' => $fight,
+            'rewards' => $rewards,
             'response' => 'success'
         ];
         return $data;
@@ -155,5 +176,43 @@ class ApiController extends Controller
         // epic         50 + (1525 / 100 * 60) = 965 = 965      15.317%
         // legendary    20 + (1555 / 100 * 60) = 953 = 953      15.127%
         // ascended     5 + (1570 / 100 * 60) = 947 = 947       15.032%
+
+        // $sum_base = 0;
+        // foreach($weights_base as $weight) {
+        //     $sum_base += $weight;
+        // }
+        // $weights_alt = [];
+        // foreach($weights_base as $weight_name => $weight) {
+        //     $weights_alt[$weight_name] = floor($weights_base[$weight_name] + (($sum_base - $weights_base[$weight_name]) / 100 * $weight_boost));
+        // }
+        // $sum_alt = 0;
+        // foreach($weights_alt as $weight) {
+        //     $sum_alt += $weight;
+        // }
+        // $result_num = rand(0, $sum_alt);
+        // $num_current = 0;
+        // $result = '';
+        // foreach($weights_alt as $weight_name => $weight) {
+        //     $num_current += $weight;
+        //     if($result_num <= $num_current) {
+        //         $result = $weight_name;
+        //         break;
+        //     }
+        // }
+        // $sum = 0;
+        // foreach($weights as $weight) {
+        //     $sum += $weight;
+        // }
+        // $result_num = rand(0, $sum);
+        // $num_current = 0;
+        // $result = '';
+        // foreach($weights as $weight_name => $weight) {
+        //     $num_current += $weight;
+        //     if($result_num <= $num_current) {
+        //         $result = $weight_name;
+        //         break;
+        //     }
+        // }
+        // return $result;
     }
 }
