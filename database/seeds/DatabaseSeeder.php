@@ -18,5 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(QuestsTableSeeder::class);
         $this->call(AbilitiesTableSeeder::class);
         $this->call(ArtifactsTableSeeder::class);
+        $this->call(JobsTableSeeder::class);
+
     }
 }

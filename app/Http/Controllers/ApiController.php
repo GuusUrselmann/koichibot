@@ -12,6 +12,7 @@ use App\User;
 use App\Stand;
 use App\Quest;
 use App\Artifact;
+use App\Job;
 
 class ApiController extends Controller
 {
@@ -19,6 +20,7 @@ class ApiController extends Controller
         //$this->middleware('api');
     }
 
+    //TODO: ///
     public function stand(Request $request) {
         $dataPost = $request->all();
         $user = User::with('stand')->where('username', $dataPost['username'])->first();
@@ -32,6 +34,7 @@ class ApiController extends Controller
         return $data;
     }
 
+    //TODO: ///
     public function setup(Request $request) {
         $dataPost = $request->all();
         $user = User::where('username', $dataPost['username'])->first();
@@ -71,6 +74,7 @@ class ApiController extends Controller
         return $data;
     }
 
+    //TODO: ///
     public function profile(Request $request) {
         $dataPost = $request->all();
         $user = User::with('stand', 'userskin')->where('username', $dataPost['username'])->first();
@@ -88,10 +92,10 @@ class ApiController extends Controller
         return $data;
     }
 
+    //TODO: ///
     public function quest(Request $request) {
         $dataPost = $request->all();
         $user = User::with('stand')->where('username', $dataPost['username'])->first();
-        // $user = User::with('stand')->where('username', 'messenwerper#9969')->first();
         if(!$user) {
             return ['response' => 'userEmpty'];
         }
@@ -108,7 +112,7 @@ class ApiController extends Controller
         if($fight->winner_fighter->type == 'player') {
             //generate money
             $rewards['money']['amount'] = ceil(rand($quest->money_spread*.8, $quest->money_spread*1.2)+$user->level()->level);
-            $rewards['money']['description'] = '**+**'.$rewards['money']['amount'].' money **+** '.$user->level()->level.' level bonus';
+            $rewards['money']['description'] = '**+**'.($rewards['money']['amount'] - $user->level()->level).' money **+** '.$user->level()->level.' level bonus';
             $rewards['experience']['amount'] = ceil(rand($quest->experience_spread*.8, $quest->experience_spread*1.2));
             $rewards['experience']['description'] = '**+**'.$rewards['experience']['amount'].' Exp.';
 
@@ -133,86 +137,31 @@ class ApiController extends Controller
             'response' => 'success'
         ];
         return $data;
+    }
 
-
-        // Level
-        // 1-10         5% higher
-        // 11-20        10% higher
-        // 20-30        20% higher
-        // 30-50        35% higher
-        // 51-100       50% higher
-        // 100+         60% higher
-
-        // Rarity
-        // common       800 weight
-        // uncommon     500 weight
-        // rare         200 weight
-        // epic         50 weight
-        // legendary    20 weight
-        // ascended     5 weight
-
-        // C+U+R+E+L+A  = 1575
-        // common       1575 - 800 = 775    50.794%
-        // uncommon     1575 - 500 = 1075   31.746%
-        // rare         1575 - 200 = 1375   12.698%
-        // epic         1575 - 50 = 1525    3.175%
-        // legendary    1575 - 20 = 1555    1.270%
-        // ascended     1575 - 5 = 1570     0.317%
-
-        // Level 4      5%
-        // C+U+R+E+L+A = 1965
-        // common       800 + (775 / 100 * 5) = 838.75 = 838    42.646%
-        // uncommon     500 + (1075 / 100 * 5) = 553.75 = 553   28.142%
-        // rare         200 + (1375 / 100 * 5) = 268.75 = 268   13.639%
-        // epic         50 + (1525 / 100 * 5) = 126.25 = 126    6.412%
-        // legendary    20 + (1555 / 100 * 5) = 97.75 = 97      4.936%
-        // ascended     5 + (1570 / 100 * 5) = 83.5 = 83        4.224%
-
-        // Level 82     60%
-        // C+U+R+E+L+A = 6300
-        // common       800 + (775 / 100 * 60) = 1265 = 1265    20.079%
-        // uncommon     500 + (1075 / 100 * 60) = 1145 = 1145   18.175%
-        // rare         200 + (1375 / 100 * 60) = 1025 = 1025   16.270%
-        // epic         50 + (1525 / 100 * 60) = 965 = 965      15.317%
-        // legendary    20 + (1555 / 100 * 60) = 953 = 953      15.127%
-        // ascended     5 + (1570 / 100 * 60) = 947 = 947       15.032%
-
-        // $sum_base = 0;
-        // foreach($weights_base as $weight) {
-        //     $sum_base += $weight;
-        // }
-        // $weights_alt = [];
-        // foreach($weights_base as $weight_name => $weight) {
-        //     $weights_alt[$weight_name] = floor($weights_base[$weight_name] + (($sum_base - $weights_base[$weight_name]) / 100 * $weight_boost));
-        // }
-        // $sum_alt = 0;
-        // foreach($weights_alt as $weight) {
-        //     $sum_alt += $weight;
-        // }
-        // $result_num = rand(0, $sum_alt);
-        // $num_current = 0;
-        // $result = '';
-        // foreach($weights_alt as $weight_name => $weight) {
-        //     $num_current += $weight;
-        //     if($result_num <= $num_current) {
-        //         $result = $weight_name;
-        //         break;
-        //     }
-        // }
-        // $sum = 0;
-        // foreach($weights as $weight) {
-        //     $sum += $weight;
-        // }
-        // $result_num = rand(0, $sum);
-        // $num_current = 0;
-        // $result = '';
-        // foreach($weights as $weight_name => $weight) {
-        //     $num_current += $weight;
-        //     if($result_num <= $num_current) {
-        //         $result = $weight_name;
-        //         break;
-        //     }
-        // }
-        // return $result;
+    //TODO: ///
+    public function job(Request $request) {
+        $dataPost = $request->all();
+        $user = User::with('stand')->where('username', $dataPost['username'])->first();
+        // $user = User::with('stand')->where('username', 'messenwerper#9969')->first();
+        if(!$user) {
+            return ['response' => 'userEmpty'];
+        }
+        $job_weights = weights_job();
+        $job_rarity = getRarity($job_weights);
+        $job = Job::where('rarity', $job_rarity)->inRandomOrder()->first();
+        //generate reward(s)
+        $rewards = [];
+        //money
+        $rewards['money']['amount'] = ceil(rand($job->money_spread*.8, $job->money_spread*1.2));
+        $rewards['money']['description'] = '**+**'.($rewards['money']['amount']).' money';
+        $user->reward($rewards);
+        $data = [
+            'user' => $user,
+            'job' => $job,
+            'rewards' => $rewards,
+            'response' => 'success'
+        ];
+        return $data;
     }
 }

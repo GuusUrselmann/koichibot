@@ -271,3 +271,16 @@ if(!function_exists('weights_artifactchance')) {
         }
     }
 }
+
+if(!function_exists('weights_job')) {
+    function weights_job() {
+        return [
+            'common' => 6000,
+            'uncommon' => 2500,
+            'rare' => 1000,
+            'epic' => 400,
+            'legendary' => 90,
+            'ascended' => 10
+        ];
+    }
+}
