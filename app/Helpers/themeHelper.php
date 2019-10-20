@@ -178,6 +178,84 @@ if(!function_exists('arrow_get')) {
     }
 }
 
+if(!function_exists('stats_generate')) {
+    function stats_generate($weights) {
+        $stats = [];
+        $stats['power'] = getRarity($weights);
+        $stats['speed'] = getRarity($weights);
+        $stats['range'] = getRarity($weights);
+        $stats['durability'] = getRarity($weights);
+        $stats['precision'] = getRarity($weights);
+        $stats['potential'] = getRarity($weights);
+        return $stats;
+    }
+}
+
+if(!function_exists('weights_stats')) {
+    function weights_stats($rarity) {
+        if($rarity == 'common') {
+            return [
+                'E' => 6000,
+                'D' => 1500,
+                'C' => 1000,
+                'B' => 400,
+                'A' => 100,
+                'UNKNOWN' => 0
+            ];
+        }
+        elseif($rarity == 'uncommon') {
+            return [
+                'E' => 5000,
+                'D' => 3000,
+                'C' => 1500,
+                'B' => 400,
+                'A' => 100,
+                'UNKNOWN' => 0
+            ];
+        }
+        elseif($rarity == 'rare') {
+            return [
+                'E' => 3500,
+                'D' => 3500,
+                'C' => 2000,
+                'B' => 700,
+                'A' => 300,
+                'UNKNOWN' => 0
+            ];
+        }
+        elseif($rarity == 'epic') {
+            return [
+                'E' => 1000,
+                'D' => 1500,
+                'C' => 3500,
+                'B' => 3000,
+                'A' => 1000,
+                'UNKNOWN' => 0
+            ];
+        }
+        elseif($rarity == 'legendary') {
+            return [
+                'E' => 100,
+                'D' => 400,
+                'C' => 1500,
+                'B' => 4000,
+                'A' => 3990,
+                'UNKNOWN' => 10
+            ];
+        }
+        elseif($rarity == 'ascended') {
+            return [
+                'E' => 100,
+                'D' => 300,
+                'C' => 1500,
+                'B' => 2500,
+                'A' => 5500,
+                'UNKNOWN' => 100
+            ];
+        }
+    }
+}
+
 if(!function_exists('weights_artifact')) {
     function weights_artifact($cat) {
         if($cat == 'common') {

@@ -214,10 +214,10 @@ class ApiController extends Controller
 
     public function arrow(Request $request) {
         $dataPost = $request->all();
-        $user = User::with('stand')->where('username', $dataPost['username'])->first();
-        $arrow = $dataPost['arrow'];
-        // $user = User::with('stand')->where('username', 'messenwerper#9969')->first();
-        // $arrow = 'arrow';
+        // $user = User::with('stand')->where('username', $dataPost['username'])->first();
+        // $arrow = $dataPost['arrow'];
+        $user = User::with('stand')->where('username', 'messenwerper#9969')->first();
+        $arrow = 'overheaven arrow';
         if(!$user) {
             return ['response' => 'userEmpty'];
         }
@@ -227,10 +227,13 @@ class ApiController extends Controller
         $stand_weights = weights_stand_arrow($arrow);
         $rarity = getRarity($stand_weights);
         $stand = Stand::where('rarity', $rarity)->inRandomOrder()->first();
+        $stats_weights = weights_stats($rarity);
+        $stats = stats_generate($stats_weights);
         $user->arrow_remove($arrow);
         $data = [
             'user' => $user,
             'stand' => $stand,
+            'stats' => $stats,
             'response' => 'success'
         ];
         //Achievement checkup (/unlock)

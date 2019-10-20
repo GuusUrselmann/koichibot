@@ -245,8 +245,8 @@ class User extends Authenticatable
                     return true;
                 }
             }
-            return false;
         }
+        return false;
     }
 
     public function arrow_remove($arrow) {
