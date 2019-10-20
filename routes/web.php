@@ -22,6 +22,7 @@ Route::group(['prefix' => 'api'], function() {
     Route::post('/vwxHGNXIQNNYO1Qxp2AO', 'ApiController@job');
     Route::post('/84FAfD7YAh2q7nAM7sqL', 'ApiController@search');
     Route::post('/HzyO7mf6KesMUfBSEW52', 'ApiController@arrow');
+    Route::post('/NSH5rUhdIcRQw4u6o34O', 'ApiController@arrowSwapStand');
 });
 
 Route::group(['prefix' => '/admin'], function() {

@@ -242,4 +242,12 @@ class ApiController extends Controller
         //Achievement checkup (/unlock)
         return $data;
     }
+
+    public function arrowSwapStand(Request $request) {
+        $dataPost = $request->all();
+        $user = User::with('stand')->where('username', $dataPost['username'])->first();
+        $stand = Stand::find($dataPost['standId']);
+        $stats = $dataPost['stats'];
+        return ['response' => $stats];
+    }
 }
