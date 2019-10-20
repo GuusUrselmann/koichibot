@@ -216,7 +216,6 @@ class ApiController extends Controller
         $dataPost = $request->all();
         $user = User::with('stand')->where('username', $dataPost['username'])->first();
         $arrow = $dataPost['arrow'];
-        // $user = User::with('stand')->where('username', 'messenwerper#9969')->first();
         // $arrow = 'overheaven';
         if($arrow != 'regular' && $arrow != 'requiem' && $arrow != 'overheaven') {
             return ['response' => 'arrowNull'];
@@ -246,8 +245,27 @@ class ApiController extends Controller
     public function arrowSwapStand(Request $request) {
         $dataPost = $request->all();
         $user = User::with('stand')->where('username', $dataPost['username'])->first();
+        // $user = User::with('stand')->where('username', 'messenwerper#9969')->first();
         $stand = Stand::find($dataPost['standId']);
+        // $stand = Stand::find(4);
         $stats = $dataPost['stats'];
-        return ['response' => $stats['power']];
+        // $stats = ['power' => 'E','speed' => 'A', 'range'=>'C','durability'=>'A','precision'=>'D','potential' => 'E'];
+        if(!$user) {
+            return ['response' => 'userEmpty'];
+        }
+        if(!$stand) {
+            return ['response' => 'standEmpty'];
+        }
+        //update user
+        $user->update([
+            'stand_id' => $stand->id,
+            'power' => $stats['power'],
+            'speed' => $stats['speed'],
+            'range' => $stats['range'],
+            'durability' => $stats['durability'],
+            'precision' => $stats['precision'],
+            'potential' => $stats['potential']
+        ]);
+        return ['response' => 'success'];
     }
 }
