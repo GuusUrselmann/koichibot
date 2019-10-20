@@ -169,7 +169,6 @@ class ApiController extends Controller
     public function search(Request $request) {
         $dataPost = $request->all();
         $user = User::with('stand')->where('username', $dataPost['username'])->first();
-        // $user = User::with('stand')->where('username', 'messenwerper#9969')->first();
         if(!$user) {
             return ['response' => 'userEmpty'];
         }
@@ -190,7 +189,8 @@ class ApiController extends Controller
             $rewards['arrow']['description'] = '**+**'.$arrow;
         }
         //artifact
-        if(rand(0, 100) <= 20) {
+        $artifact_chance = getRarity(weights_artifactchance($search->rarity));
+        if($artifact_chance == 'success') {
             $artifact_weights = weights_artifact($search->rarity);
             $artifact_rarity = getRarity($artifact_weights);
             $artifact = Artifact::where('rarity', $artifact_rarity)->inRandomOrder()->first();
@@ -209,6 +209,31 @@ class ApiController extends Controller
             'rewards' => $rewards,
             'response' => 'success'
         ];
+        return $data;
+    }
+
+    public function arrow(Request $request) {
+        $dataPost = $request->all();
+        // $user = User::with('stand')->where('username', $dataPost['username'])->first();
+        // $arrow = $dataPost['arrow'];
+        $user = User::with('stand')->where('username', 'messenwerper#9969')->first();
+        $arrow = 'arrow';
+        if(!$user) {
+            return ['response' => 'userEmpty'];
+        }
+        if(!$user->arrow_has($arrow)) {
+            return ['response' => 'arrowEmpty'];
+        }
+        $stand_weights = weights_stand_arrow($arrow);
+        $rarity = getRarity($stand_weights);
+        $stand = Stand::where('rarity', $rarity)->inRandomOrder()->first();
+        $user->arrow_remove($arrow);
+        $data = [
+            'user' => $user,
+            'stand' => $stand,
+            'response' => 'success'
+        ];
+        //Achievement checkup (/unlock)
         return $data;
     }
 }

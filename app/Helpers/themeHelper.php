@@ -309,3 +309,38 @@ if(!function_exists('weights_search')) {
         ];
     }
 }
+
+if(!function_exists('weights_stand_arrow')) {
+    function weights_stand_arrow($arrow) {
+        if($arrow == 'arrow') {
+            return [
+                'common' => 5000,
+                'uncommon' => 3000,
+                'rare' => 1500,
+                'epic' => 500,
+                'legendary' => 0,
+                'ascended' => 0
+            ];
+        }
+        elseif($arrow == 'requiem arrow') {
+            return [
+                'common' => 2000,
+                'uncommon' => 2000,
+                'rare' => 5000,
+                'epic' => 900,
+                'legendary' => 100,
+                'ascended' => 0
+            ];
+        }
+        elseif($arrow == 'overheaven arrow') {
+            return [
+                'common' => 0,
+                'uncommon' => 500,
+                'rare' => 2000,
+                'epic' => 4000,
+                'legendary' => 2000,
+                'ascended' => 1500
+            ];
+        }
+    }
+}

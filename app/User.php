@@ -232,4 +232,41 @@ class User extends Authenticatable
         ]);
         //Check for achievements??
     }
+
+    public function arrow_has($arrow) {
+        $inventory = [];
+        $inventory_arrows = explode(',', $this->inventory_arrows);
+        foreach($inventory_arrows as $inventory_arrow) {
+            $inventory[] = explode(':', $inventory_arrow);
+        }
+        foreach($inventory as $i => $inv_arrow) {
+            if($inv_arrow[0] == $arrow) {
+                if($inv_arrow[1] > 0) {
+                    return true;
+                }
+            }
+            return false;
+        }
+    }
+
+    public function arrow_remove($arrow) {
+        $inventory = [];
+        $inventory_arrows = explode(',', $this->inventory_arrows);
+        foreach($inventory_arrows as $inventory_arrow) {
+            $inventory[] = explode(':', $inventory_arrow);
+        }
+        foreach($inventory as $i => $inv_arrow) {
+            if($inv_arrow[0] == $arrow) {
+                $inventory[$i][1] = $inventory[$i][1] - 1;
+            }
+        }
+        $inv_string = '';
+        foreach($inventory as $inventory_item) {
+            $inv_string .= $inventory_item[0].':'.$inventory_item[1].',';
+        }
+        $inv_string = substr($inv_string,0,-1);
+        $this->update([
+            'inventory_arrows' => $inv_string
+        ]);
+    }
 }
