@@ -218,7 +218,7 @@ class ApiController extends Controller
         $arrow = $dataPost['arrow'];
         // $user = User::with('stand')->where('username', 'messenwerper#9969')->first();
         // $arrow = 'overheaven';
-        if($arrow != 'regular' || $arrow != 'requiem' || $arrow != 'overheaven') {
+        if($arrow != 'regular' && $arrow != 'requiem' && $arrow != 'overheaven') {
             return ['response' => 'arrowNull'];
         }
         if(!$user) {
