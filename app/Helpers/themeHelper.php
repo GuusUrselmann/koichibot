@@ -169,9 +169,9 @@ if(!function_exists('getRangeRarity')) {
 if(!function_exists('arrow_get')) {
     function arrow_get() {
         $weights = [
-            'arrow' => 6000,
-            'requiem arrow' => 3000,
-            'overheaven arrow' => 1000
+            'regular' => 6000,
+            'requiem' => 3000,
+            'overheaven' => 1000
         ];
         $arrow = getRarity($weights);
         return $arrow;
@@ -390,7 +390,7 @@ if(!function_exists('weights_search')) {
 
 if(!function_exists('weights_stand_arrow')) {
     function weights_stand_arrow($arrow) {
-        if($arrow == 'arrow') {
+        if($arrow == 'regular') {
             return [
                 'common' => 5000,
                 'uncommon' => 3000,
@@ -400,7 +400,7 @@ if(!function_exists('weights_stand_arrow')) {
                 'ascended' => 0
             ];
         }
-        elseif($arrow == 'requiem arrow') {
+        elseif($arrow == 'requiem') {
             return [
                 'common' => 2000,
                 'uncommon' => 2000,
@@ -410,7 +410,7 @@ if(!function_exists('weights_stand_arrow')) {
                 'ascended' => 0
             ];
         }
-        elseif($arrow == 'overheaven arrow') {
+        elseif($arrow == 'overheaven') {
             return [
                 'common' => 0,
                 'uncommon' => 500,
