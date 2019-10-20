@@ -214,10 +214,10 @@ class ApiController extends Controller
 
     public function arrow(Request $request) {
         $dataPost = $request->all();
-        // $user = User::with('stand')->where('username', $dataPost['username'])->first();
-        // $arrow = $dataPost['arrow'];
-        $user = User::with('stand')->where('username', 'messenwerper#9969')->first();
-        $arrow = 'arrow';
+        $user = User::with('stand')->where('username', $dataPost['username'])->first();
+        $arrow = $dataPost['arrow'];
+        // $user = User::with('stand')->where('username', 'messenwerper#9969')->first();
+        // $arrow = 'arrow';
         if(!$user) {
             return ['response' => 'userEmpty'];
         }
