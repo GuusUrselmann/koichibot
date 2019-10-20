@@ -20,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'discord_id', 'username', 'password', 'userlevel', 'money', 'userskin_id', 'stand_id', 'health', 'power_min', 'power_max', 'power', 'speed', 'range', 'durability', 'precision', 'potential', 'level_id', 'experience', 'unlocks_userskins', 'inventory_artifacts'
+        'discord_id', 'username', 'password', 'userlevel', 'money', 'userskin_id', 'stand_id', 'health', 'power_min', 'power_max', 'power', 'speed', 'range', 'durability', 'precision', 'potential', 'level_id', 'experience', 'unlocks_userskins', 'inventory_artifacts', 'inventory_arrows'
     ];
 
     /**
@@ -113,6 +113,10 @@ class User extends Authenticatable
 
         $enemy = new Fighter('enemy', $stand_id, $health, $power_min, $power_max, $power, $speed, $range, $durability, $precision, $potential, $abilities, $level);
         return $enemy;
+
+        /* TODO:
+        * Enemy based off of level, check meta for calculations
+        */
     }
 
     public function reward($rewards) {
@@ -124,6 +128,9 @@ class User extends Authenticatable
         }
         if(!empty($rewards['artifact'])) {
             $this->artifact_add($rewards['artifact']['item']);
+        }
+        if(!empty($rewards['arrow'])) {
+            $this->arrow_add($rewards['arrow']['item']);
         }
     }
 
@@ -188,5 +195,41 @@ class User extends Authenticatable
         ]);
         //check for achievements
         // $this->achievements_check();
+    }
+
+    public function arrow_add($arrow) {
+        $inventory = [];
+        $inventory_arrows = explode(',', $this->inventory_arrows);
+        foreach($inventory_arrows as $inventory_arrow) {
+            $inventory[] = explode(':', $inventory_arrow);
+        }
+        foreach($inventory as $i => $inv_arrow) {
+            if($inv_arrow[0] == $arrow) {
+                //Already exists, add 1 to inventory
+                $inventory[$i][1] += 1;
+                $inv_string = '';
+                foreach($inventory as $inventory_item) {
+                    $inv_string .= $inventory_item[0].':'.$inventory_item[1].',';
+                }
+                $inv_string = substr($inv_string, 0, -1);
+                $this->update([
+                    'inventory_arrows' => $inv_string
+                ]);
+                //Check for achievements??
+                return;
+            }
+
+        }
+        //Add new to inventory
+        $inventory[] = [$arrow,1];
+        $inv_string = '';
+        foreach($inventory as $inventory_item) {
+            $inv_string .= $inventory_item[0].':'.$inventory_item[1].',';
+        }
+        $inv_string = substr($inv_string,0,-1);
+        $this->update([
+            'inventory_arrows' => $inv_string
+        ]);
+        //Check for achievements??
     }
 }

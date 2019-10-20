@@ -166,6 +166,18 @@ if(!function_exists('getRangeRarity')) {
     }
 }
 
+if(!function_exists('arrow_get')) {
+    function arrow_get() {
+        $weights = [
+            'arrow' => 6000,
+            'requiem arrow' => 3000,
+            'overheaven arrow' => 1000
+        ];
+        $arrow = getRarity($weights);
+        return $arrow;
+    }
+}
+
 if(!function_exists('weights_artifact')) {
     function weights_artifact($cat) {
         if($cat == 'common') {
@@ -274,6 +286,19 @@ if(!function_exists('weights_artifactchance')) {
 
 if(!function_exists('weights_job')) {
     function weights_job() {
+        return [
+            'common' => 6000,
+            'uncommon' => 2500,
+            'rare' => 1000,
+            'epic' => 400,
+            'legendary' => 90,
+            'ascended' => 10
+        ];
+    }
+}
+
+if(!function_exists('weights_search')) {
+    function weights_search() {
         return [
             'common' => 6000,
             'uncommon' => 2500,

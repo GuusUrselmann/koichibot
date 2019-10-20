@@ -9,4 +9,5 @@
             text
         </div>
     </div>
+    <?= true ? 'text' : '' ?>
 @endsection

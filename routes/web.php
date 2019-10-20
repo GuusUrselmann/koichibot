@@ -20,6 +20,7 @@ Route::group(['prefix' => 'api'], function() {
     Route::post('/EimjBQiBqLEZFtK9AMcl', 'ApiController@profile');
     Route::post('/R7uI40zuxewJp5r6zd08', 'ApiController@quest');
     Route::post('/vwxHGNXIQNNYO1Qxp2AO', 'ApiController@job');
+    Route::post('/84FAfD7YAh2q7nAM7sqL', 'ApiController@search');
 });
 
 Route::group(['prefix' => '/admin'], function() {

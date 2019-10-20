@@ -13,6 +13,7 @@ use App\Stand;
 use App\Quest;
 use App\Artifact;
 use App\Job;
+use App\Search;
 
 class ApiController extends Controller
 {
@@ -143,7 +144,6 @@ class ApiController extends Controller
     public function job(Request $request) {
         $dataPost = $request->all();
         $user = User::with('stand')->where('username', $dataPost['username'])->first();
-        // $user = User::with('stand')->where('username', 'messenwerper#9969')->first();
         if(!$user) {
             return ['response' => 'userEmpty'];
         }
@@ -159,6 +159,53 @@ class ApiController extends Controller
         $data = [
             'user' => $user,
             'job' => $job,
+            'rewards' => $rewards,
+            'response' => 'success'
+        ];
+        return $data;
+    }
+
+    //TODO: ///
+    public function search(Request $request) {
+        $dataPost = $request->all();
+        $user = User::with('stand')->where('username', $dataPost['username'])->first();
+        // $user = User::with('stand')->where('username', 'messenwerper#9969')->first();
+        if(!$user) {
+            return ['response' => 'userEmpty'];
+        }
+        $search_weights = weights_search();
+        $search_rarity = getRarity($search_weights);
+        $search = Search::where('rarity', $search_rarity)->inRandomOrder()->first();
+        //generate reward(s)
+        $rewards = [];
+        //money
+        if(rand(0, 100) <= 40) {
+            $rewards['money']['amount'] = ceil(rand($search->money_spread*.8, $search->money_spread*1.2));
+            $rewards['money']['description'] = '**+**'.($rewards['money']['amount']).' money';
+        }
+        //arrow
+        if(rand(0, 100) <= 40) {
+            $arrow = arrow_get();
+            $rewards['arrow']['item'] = $arrow;
+            $rewards['arrow']['description'] = '**+**'.$arrow;
+        }
+        //artifact
+        if(rand(0, 100) <= 20) {
+            $artifact_weights = weights_artifact($search->rarity);
+            $artifact_rarity = getRarity($artifact_weights);
+            $artifact = Artifact::where('rarity', $artifact_rarity)->inRandomOrder()->first();
+            $rewards['artifact']['item'] = $artifact;
+            $rewards['artifact']['description'] = 'You found **'.$artifact->name.'**! that\'s pretty **'.$artifact->rarity.'**.';
+        }
+        //or userskin
+        elseif(rand(0, 100) <= 40) {
+            //TODO: Add userskin possibility
+        }
+
+        $user->reward($rewards);
+        $data = [
+            'user' => $user,
+            'search' => $search,
             'rewards' => $rewards,
             'response' => 'success'
         ];
