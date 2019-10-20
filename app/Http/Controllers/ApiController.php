@@ -248,6 +248,6 @@ class ApiController extends Controller
         $user = User::with('stand')->where('username', $dataPost['username'])->first();
         $stand = Stand::find($dataPost['standId']);
         $stats = $dataPost['stats'];
-        return ['response' => $stats];
+        return ['response' => $stats['power']];
     }
 }
